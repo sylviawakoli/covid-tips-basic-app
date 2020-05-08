@@ -1,0 +1,237 @@
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    margin: 0px;
+    padding: 0px;
+    background: #0B4060;
+    font-family: robotoCondensed;
+    color: white;
+}
+
+@font-face {
+    font-family: robotoCondensed;
+    src: url('./Roboto_Condensed/RobotoCondensed-Regular.ttf')
+}
+
+@font-face {
+    font-family: robotoCondensed;
+    src: url('./Roboto_Condensed/RobotoCondensed-Bold.ttf');
+    font-weight: bold;
+}
+
+#splash-screen {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: #5652A3;
+    padding-top: 20vh;
+    animation: fadeout 2s 1 linear;
+    pointer-events: none;
+    -webkit-animation: fadeout 2s 1 linear;
+}
+
+@keyframes fadeout {
+    0% {
+        opacity: 1;
+        display: block;
+    }
+    70% {
+        opacity: 1;
+    }
+    99% {
+        opacity: 0;
+        display: none;
+    }
+  }
+
+.splash-title {
+    padding: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title-image {
+    width: 100%;
+}
+
+.footer-image {
+    width: 100%;
+    max-width: 600px;
+}
+
+.footer-text {
+    font-size: 0.8em;
+    opacity: 0.8;
+}
+
+.section {
+    width: 100%;
+    font-family: robotoCondensed;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+p, h2 {
+    display: block;
+    margin: 10px;
+}
+
+.subtitle {
+    font-family: robotoCondensed;
+    font-weight: bold;
+    margin: 10px;
+    display: inline-block;
+}
+
+.subheader {
+    background: #0B4060;
+    color: white;
+    font-family: robotoCondensed;
+}
+
+.subheader img {
+    max-width: 700px;
+    display: block;
+}
+
+.section:nth-of-type(4n+1){
+    background: #FBAD18;
+    color: #0B4060;
+}
+
+
+.section:nth-of-type(4n+2) {
+    background: #5652A3;
+    color: white;
+}
+
+.section:nth-of-type(4n+3) {
+    background: #56C5D0;
+    color: #0B4060;
+}
+
+.section:nth-of-type(4n+4) {
+    background: #ED1651;
+    color: white;
+}
+
+.yellow-bg {
+    padding: 10px;
+    background: #FBAD18;
+    color: #0B4060;
+}
+
+.purple-bg {
+    padding: 10px;
+    background: #5652A3;
+    color: white;
+}
+
+.cyan-bg {
+    padding: 10px;
+    background: #56C5D0;
+    color: #0B4060;
+}
+
+.magenta-bg {
+    padding: 10px;
+    background: #ED1651;
+    color: white;
+}
+
+.navy-bg {
+    padding: 10px;
+    background: #0B4060;
+    color: white;
+}
+
+.blob-container {
+    display: flex;
+    position: relative;
+    width: 124px;
+    height: 164px;
+}
+
+.blob-container .body {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes waving-arm {
+    0% {
+        -webkit-transform: rotate(50deg);
+        transform: rotate(50deg);
+    }
+    10% {
+        -webkit-transform: rotate(140deg);
+        transform: rotate(140deg);
+    }
+    20% {
+        -webkit-transform: rotate(50deg);
+        transform: rotate(50deg);
+    }
+    59% {
+        -webkit-transform: rotate(50deg);
+        transform: rotate(50deg);
+    }
+    70% {
+        -webkit-transform: rotate(140deg);
+        transform: rotate(140deg);
+    }
+    80% {
+        -webkit-transform: rotate(50deg);
+        transform: rotate(50deg);
+    }
+}
+
+@-webkit-keyframes rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+.blob-container .todler {
+    width: 40%;
+    position: absolute;
+    right: 3px;
+    bottom: 40px;
+    z-index: 2;
+    animation: rotate 3s infinite linear;
+    -webkit-animation: rotate 3s infinite linear;
+    filter: hue-rotate(150deg);
+    -webkit-filter: hue-rotate(150deg);
+}
+
+.blob-container .arm {
+    width: 10%;
+    position: absolute;
+    right: 3px;
+    bottom: 64px;
+    z-index: 2;
+    transform: rotate(50deg);
+    transform-origin: bottom left;
+    animation: waving-arm 3s infinite linear;
+    -webkit-transform: rotate(50deg);
+    -webkit-transform-origin: bottom left;
+    -webkit-animation: waving-arm 3s infinite linear;
+}
