@@ -1,0 +1,19 @@
+section:nth-of-type(4n) {
+  background: #fbad18;
+  color: #0b4060;
+}
+
+section:nth-of-type(4n + 1) {
+  background: #5652a3;
+  color: white;
+}
+
+section:nth-of-type(4n + 2) {
+  background: #56c5d0;
+  color: #0b4060;
+}
+
+section:nth-of-type(4n + 3) {
+  background: #ed1651;
+  color: white;
+}
