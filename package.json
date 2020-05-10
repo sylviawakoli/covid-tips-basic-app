@@ -2,7 +2,7 @@
   "name": "covid-tips",
   "version": "1.0.0",
   "author": "IDEMS International",
-  "homepage": "https://github.com/IDEMSInternational/covid-tips-basic-app",
+  "homepage": "https://idems.international",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
