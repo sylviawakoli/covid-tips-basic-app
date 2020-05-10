@@ -1,4 +1,4 @@
-<div class="main-container">
+<div class="topic-list-container">
   <div *ngFor="let topic of topics; let i=index">
     <div [routerLink]="['/topics',i+1]">
       <img [src]="'assets/img/title' + (i+1) + '.png'" />
@@ -6,6 +6,24 @@
     <ion-icon class="nav-icon" name="chevron-forward-outline"></ion-icon>
   </div>
 </div>
+<hr />
+<div class="magenta-bg">
+  <h2>There are a lot of stories going around</h2>
+  <p style="font-size: 1.5em; flex-direction: column;">
+    Some may not be true. Use trustworthy sites:
+    <br />
+    <a
+      href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public"
+    >
+      WHO Covid 19 Advice
+    </a>
+    and
+    <a href="https://www.unicef.org/coronavirus/covid-19">
+      UNICEF Covid 19 Advice
+    </a>
+  </p>
+</div>
+
 <hr />
 <div class="subheader" id="subheader7" style="padding-left: 10px;">
   <h1>Songs</h1>
