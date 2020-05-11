@@ -6,9 +6,33 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./topics.scss"],
 })
 export class TopicsPage implements OnInit {
-  topics = [1, 2, 3, 4, 5, 6];
+  topics = [
+    {
+      title: "One-on-One Time",
+      number: 1,
+    },
+    {
+      title: "Keeping It Positive",
+      number: 2,
+    },
+    {
+      title: "Structure Up",
+      number: 3,
+    },
+    {
+      title: "Bad Behavior",
+      number: 4,
+    },
+    {
+      title: "Keep Calm and Manage Stress",
+      number: 5,
+    },
+    {
+      title: "Talking about Demo-1-19",
+      number: 6,
+    },
+  ];
 
   constructor() {}
-
   ngOnInit() {}
 }
