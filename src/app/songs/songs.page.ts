@@ -11,7 +11,6 @@ export class SongsPage implements OnInit {
   songList: Song[];
 
   constructor(songService: SongService) {
-    console.log("hello song service");
     songService.getSongList().subscribe((songs) => {
       this.songList = songs;
     });

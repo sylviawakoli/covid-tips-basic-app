@@ -6,9 +6,7 @@ import { songList } from "./song-lyrics/song-list";
 
 @Injectable()
 export class SongService {
-  constructor(protected http: HttpClient) {
-    console.log("http", HttpClient);
-  }
+  constructor(protected http: HttpClient) {}
 
   getSongList(): Observable<Song[]> {
     return of(songList);
