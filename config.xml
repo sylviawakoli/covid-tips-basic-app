@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="international.idems.apps.cortest3" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>MyApp</name>
-    <description>Covid Tips</description>
+    <description>Demo-1 Tips</description>
     <author email="info@idems.international" href="https://idems.international">IDEMS international</author>
     <content src="index.html" />
     <access origin="*" />
