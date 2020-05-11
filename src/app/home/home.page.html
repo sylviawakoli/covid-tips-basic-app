@@ -1,62 +1,17 @@
-<div class="topic-list-container">
-  <div *ngFor="let topic of topics; let i=index">
-    <div [routerLink]="['/topics',i+1]">
-      <img [src]="'assets/img/title' + (i+1) + '.png'" />
-    </div>
-    <ion-icon class="nav-icon" name="chevron-forward-outline"></ion-icon>
+<!-- TODO - provide proof of affiliation for play store and uncomment -->
+<!-- <app-partners-footer></app-partners-footer> -->
+<div class="padding">
+  <h1 color="secondary">Covid 19 Parenting</h1>
+  <div class="nav-menu-item" [routerLink]="['/topics']">
+    <img src="assets/img/menu-tips.svg" />
+    <h2>
+      Parenting Tips
+    </h2>
+  </div>
+  <div class="nav-menu-item" [routerLink]="['/activities']">
+    <img src="assets/img/menu-activities.svg" />
+    <h2>
+      Fun Activities
+    </h2>
   </div>
 </div>
-<hr />
-<div class="magenta-bg">
-  <h2>There are a lot of stories going around</h2>
-  <p style="font-size: 1.5em; flex-direction: column;">
-    Some may not be true. Use trustworthy sites:
-    <br />
-    <a
-      href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public"
-    >
-      WHO Covid 19 Advice
-    </a>
-    and
-    <a href="https://www.unicef.org/coronavirus/covid-19">
-      UNICEF Covid 19 Advice
-    </a>
-  </p>
-</div>
-
-<hr />
-<div class="subheader" id="subheader7" style="padding-left: 10px;">
-  <h1>Songs</h1>
-  <p style="font-weight: bold; color: white;">
-    Here are some songs you can sing with your kids.
-  </p>
-  <h2>Ay Gazoomba</h2>
-  <audio src="assets/audio/Ay_Ga_Zoomba.mp3" controls></audio>
-  <br />
-  <a>Download Song</a>
-  <a>Share Song</a>
-  <h2>Bella Mama</h2>
-  <audio src="assets/audio/Bella_Mama.mp3" controls></audio>
-  <h2>Zum Gali Gali</h2>
-  <audio src="assets/audio/Zum_Gali_Gali.mp3" controls></audio>
-</div>
-<div class="topic" id="topic7"></div>
-<img src="assets/img/orgs1.png" class="footer-image" />
-<img src="assets/img/orgs2.png" class="footer-image" />
-<p class="footer-text">
-  The mark "CDC" is owned by the US Dept of Health and Human Services and is
-  used with permission. Use of this logo is not an endorsement by HHS or CDC of
-  any particular product, service, or enterprise.
-</p>
-<p class="footer-text">
-  Parenting for Lifelong Health is supported by the UKRI GCRF Accelerating
-  Achievement for Africa's Adolescents Hub, the European Research Council (ERC)
-  under the European Union's Seventh Framework Programme and the Horizon 2020
-  Research and Innovation Programme, Oxford University Innovation GCRF
-  Sustainable Impact Fund, UNICEF, the Leverhulme Trust, the Economic and Social
-  Research Council, WHO, CIDA, the National Research Foundation of South Africa,
-  Ilifa Labantwana, Rand Merchant Bank Fund, the ApexHi Charitable Trust, the
-  John Fell Fund, the Evaluation Fund, the UBS Optimus Foundation, USAID-PEPFAR,
-  the Wellcome Trust, Grand Challenges Canada and Wellspring Advisors.
-</p>
-<script src="./js/splash.js"></script>

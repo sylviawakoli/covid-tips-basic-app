@@ -12,6 +12,8 @@ import {
   Topic6Component,
 } from "./content";
 import { TopicHeaderComponent } from "./content/nav-header";
+import { TopicsPage } from "./topics.page";
+import { ComponentsModule } from "src/app/components/components.module";
 
 const TOPIC_CONTENT_COMPONENTS = [
   Topic1Component,
@@ -21,10 +23,17 @@ const TOPIC_CONTENT_COMPONENTS = [
   Topic5Component,
   Topic6Component,
   TopicHeaderComponent,
+  TopicsPage,
 ];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, TopicsPageRoutingModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    TopicsPageRoutingModule,
+    ComponentsModule,
+  ],
   declarations: TOPIC_CONTENT_COMPONENTS,
   exports: [TopicHeaderComponent],
 })

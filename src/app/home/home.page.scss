@@ -1,18 +1,12 @@
-.topic-list-container {
-  display: flex;
-  flex-direction: column;
-}
-.topic-list-container > div {
+.nav-menu-item {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgb(255, 255, 255, 0.3);
+
+  border-bottom: 1px solid var(--ion-color-tertiary);
+  padding: 20px 20px;
   cursor: pointer;
 }
-img {
-  width: 100%;
-  max-width: 400px;
-}
-.nav-icon {
-  font-size: 2em;
-  margin-left: 5px;
+.nav-menu-item > h2 {
+  margin-left: 20px;
+  color: var(--ion-color-tertiary);
 }
