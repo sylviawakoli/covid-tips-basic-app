@@ -9,8 +9,9 @@ import { Location } from "@angular/common";
       <ion-button fill="clear" style="color:white" (click)="back()">
         <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
       </ion-button>
-      <div>
-        <img [src]="'assets/img/title' + topic + '.png'" class="title-image" />
+      <div style="flex:1">
+        <!-- TODO: Replace with topic title component -->
+        <!-- <img [src]="'assets/img/title' + topic + '.png'" class="title-image" /> -->
       </div>
       <ion-button
         fill="clear"

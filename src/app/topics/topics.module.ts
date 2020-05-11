@@ -14,6 +14,7 @@ import {
 import { TopicHeaderComponent } from "./content/nav-header";
 import { TopicsPage } from "./topics.page";
 import { ComponentsModule } from "src/app/components/components.module";
+import { TopicTitleComponent } from "./content/topic-title";
 
 const TOPIC_CONTENT_COMPONENTS = [
   Topic1Component,
@@ -24,6 +25,7 @@ const TOPIC_CONTENT_COMPONENTS = [
   Topic6Component,
   TopicHeaderComponent,
   TopicsPage,
+  TopicTitleComponent,
 ];
 
 @NgModule({
@@ -35,6 +37,6 @@ const TOPIC_CONTENT_COMPONENTS = [
     ComponentsModule,
   ],
   declarations: TOPIC_CONTENT_COMPONENTS,
-  exports: [TopicHeaderComponent],
+  exports: [TopicHeaderComponent, TopicTitleComponent],
 })
 export class TopicsPageModule {}
