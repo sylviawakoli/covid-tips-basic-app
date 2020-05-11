@@ -1,22 +1,69 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="home"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Tips</ion-title>
-  </ion-toolbar>
-</ion-header>
-<ion-content class="padding">
-  <div class="topic-list-container">
-    <app-topic-title
-      class="topic-nav-link"
-      *ngFor="let topic of topics; let i=index"
-      [routerLink]="['/topics',i+1]"
-      [topic]="topic"
-    >
-    </app-topic-title>
-  </div>
+<div class="slides-container">
+  <ion-slides
+    #slides
+    (ionSlideDidChange)="slideDidChange()"
+    [options]="slideOptions"
+  >
+    <ion-slide>
+      <div class="slide-content">
+        <ion-header>
+          <ion-toolbar color="primary">
+            <ion-buttons slot="start">
+              <ion-back-button defaultHref="home"></ion-back-button>
+            </ion-buttons>
+            <ion-title>Tips</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <!-- <ion-content> -->
+        <div class="topic-list-container">
+          <app-topic-title
+            class="topic-nav-link"
+            *ngFor="let topic of topics; let i=index"
+            (click)="slideTo(i+1)"
+            [topic]="topic"
+          >
+          </app-topic-title>
+        </div>
+      </div>
+    </ion-slide>
+    <!-- NOTE - do not use *ngFor in slides as dynamic heights can be tricky -->
+    <ion-slide *ngFor="let topic of topics; let i=index">
+      <div class="slide-content">
+        <div style="display: flex; align-items: center;">
+          <ion-button fill="clear" style="color: white;" (click)="slideTo(0)">
+            <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+          </ion-button>
+          <app-topic-title [topic]="topic"></app-topic-title>
+        </div>
+        <app-topic-1 *ngIf="topic.number===1"></app-topic-1>
+        <app-topic-2 *ngIf="topic.number===2"></app-topic-2>
+        <app-topic-3 *ngIf="topic.number===3"></app-topic-3>
+        <app-topic-4 *ngIf="topic.number===4"></app-topic-4>
+        <app-topic-5 *ngIf="topic.number===5"></app-topic-5>
+        <app-topic-6 *ngIf="topic.number===6"></app-topic-6>
+        <div
+          style="margin-top: 1em;"
+          *ngIf="i < topics.length - 1"
+          (click)="slideTo(topic.number+1)"
+        >
+          <h2>Next:</h2>
+          <div style="display: flex; align-items: center;">
+            <div style="margin-left: 10px; flex: 1;">
+              <app-topic-title [topic]="topics[i+1]"></app-topic-title>
+            </div>
+            <ion-icon
+              style="font-size: 30px;"
+              name="chevron-forward-outline"
+            ></ion-icon>
+          </div>
+        </div>
+        <div style="margin-top: 1em;" *ngIf="i === topics.length - 1">
+          <h2>Go Back Home</h2>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</div>
 
-  <!-- TODO - provide proof of affiliation for play store and uncomment -->
-  <!-- <app-info-sites-disclaimer></app-info-sites-disclaimer> -->
-</ion-content>
+<!-- TODO - provide proof of affiliation for play store and uncomment -->
+<!-- <app-info-sites-disclaimer></app-info-sites-disclaimer> -->
