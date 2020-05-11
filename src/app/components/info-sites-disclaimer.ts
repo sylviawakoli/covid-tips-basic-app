@@ -13,11 +13,11 @@ import { Component, OnInit } from "@angular/core";
       <a
         href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public"
       >
-        WHO Covid 19 Advice
+        WHO Demo-1 19 Advice
       </a>
       and
-      <a href="https://www.unicef.org/coronavirus/covid-19">
-        UNICEF Covid 19 Advice
+      <a href="https://www.unicef.org/coronavirus/demo-1-19">
+        UNICEF Demo-1 19 Advice
       </a>
     </p>
   </div>`,
