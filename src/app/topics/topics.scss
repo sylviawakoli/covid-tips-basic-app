@@ -17,3 +17,25 @@ section:nth-of-type(4n + 3) {
   background: #ed1651;
   color: white;
 }
+
+.topic-list-container {
+  display: flex;
+  flex-direction: column;
+}
+.topic-list-container > div {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+img {
+  width: 100%;
+  max-width: 400px;
+}
+.nav-icon {
+  font-size: 2em;
+  margin-left: 5px;
+}
+#topic-5-list > li {
+  margin-bottom: 1em;
+}

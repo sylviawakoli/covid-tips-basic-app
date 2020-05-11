@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Tips</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="padding">
+  <div class="topic-list-container">
+    <div *ngFor="let topic of topics; let i=index">
+      <div [routerLink]="['/topics',i+1]">
+        <img [src]="'assets/img/title' + (i+1) + '.png'" />
+      </div>
+      <ion-icon class="nav-icon" name="chevron-forward-outline"></ion-icon>
+    </div>
+  </div>
+  <app-info-sites-disclaimer></app-info-sites-disclaimer>
+</ion-content>

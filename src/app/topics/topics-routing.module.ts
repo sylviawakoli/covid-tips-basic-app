@@ -8,11 +8,12 @@ import {
   Topic5Component,
   Topic6Component,
 } from "./content";
+import { TopicsPage } from "./topics.page";
 
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "1",
+    component: TopicsPage,
   },
   {
     path: "1",
