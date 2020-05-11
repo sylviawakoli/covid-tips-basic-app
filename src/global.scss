@@ -28,46 +28,7 @@
 @import "./theme/fonts.scss";
 @import "./theme//typography.scss";
 @import "./theme//animations.scss";
-
-.ion-page {
-  overflow: auto;
-}
-
-html,
-body {
-  width: 100vw;
-  height: 100vh;
-  overflow-x: hidden;
-  margin: 0px;
-  padding: 0px;
-  background: #0b4060;
-  font-family: "robotoCondensed";
-  color: white;
-}
-
-#splash-screen {
-  display: none;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
-  background-color: #5652a3;
-  padding-top: 20vh;
-  animation: fadeout 2s 1 linear;
-  pointer-events: none;
-  -webkit-animation: fadeout 2s 1 linear;
-}
-
-.splash-title {
-  padding: 30px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
+@import "./theme/layout.scss";
 
 .center {
   margin-left: auto;
@@ -92,23 +53,6 @@ body {
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
-}
-
-p,
-h2 {
-  display: block;
-  margin: 10px;
-}
-
-.subtitle {
-  font-weight: bold;
-  margin: 10px;
-  display: inline-block;
-}
-
-.subheader {
-  background: #0b4060;
-  color: white;
 }
 
 .subheader img {
