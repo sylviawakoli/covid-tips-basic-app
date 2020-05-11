@@ -1,11 +1,19 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
     <ion-title>Songs</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-item *ngFor="let song of songList; index as i">
-    <ion-icon name="musical-notes-outline"></ion-icon>
+  <div class="subheader" id="subheader7" style="padding-left: 10px;">
+    <p style="font-weight: bold; color: white;">
+      Here are some songs you can sing with your kids.
+    </p>
+  </div>
+  <ion-item class="song-item" *ngFor="let song of songList; index as i">
+    <ion-icon class="song-icon" name="musical-notes-outline"></ion-icon>
     <ion-label [routerLink]="['/songs/song/', i]">{{song.songTitle}}</ion-label>
   </ion-item>
 </ion-content>

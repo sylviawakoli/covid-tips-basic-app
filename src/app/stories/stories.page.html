@@ -1,10 +1,18 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
     <ion-title>Stories</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-item *ngFor="let story of storyList;">
-    <ion-label [routerLink]="['/stories/story/', story.id]">{{story.name}}</ion-label>
+  <p style="font-weight: bold; color: white;">
+    Here are some stories you can read with your kids.
+  </p>
+  <ion-item class="story-item" *ngFor="let story of storyList;">
+    <ion-label [routerLink]="['/stories/story/', story.id]"
+      >{{story.name}}</ion-label
+    >
   </ion-item>
 </ion-content>
