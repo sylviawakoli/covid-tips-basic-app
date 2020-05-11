@@ -8,8 +8,6 @@ import { Component, Input } from "@angular/core";
       <h2 class="topic-list-title">DEMO-1 PARENTING</h2>
       <h2 class="topic-list-subtitle">{{ topic.title }}</h2>
     </div>
-
-    <ion-icon class="nav-icon" name="chevron-forward-outline"></ion-icon>
   </div>`,
   styles: [
     `
@@ -21,6 +19,7 @@ import { Component, Input } from "@angular/core";
         color: var(--ion-color-tertiary);
         font-size: 80px;
         margin-right: 10px;
+        line-height: 80px;
       }
       .topic-list-title {
         color: var(--ion-color-secondary);
