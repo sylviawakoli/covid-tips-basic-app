@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Songs</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item *ngFor="let song of songList; index as i">
+    <ion-icon name="musical-notes-outline"></ion-icon>
+    <ion-label [routerLink]="['/songs/song/', i]">{{song.songTitle}}</ion-label>
+  </ion-item>
+</ion-content>
