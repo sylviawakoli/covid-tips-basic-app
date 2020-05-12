@@ -30,10 +30,18 @@
     <ion-slide *ngFor="let topic of topics; let i=index">
       <div class="slide-content">
         <div style="display: flex; align-items: center;">
-          <ion-button fill="clear" style="color: white;" (click)="slideTo(0)">
+          <ion-button fill="clear" class="topic-nav" (click)="slideTo(0)">
             <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
           </ion-button>
-          <app-topic-title [topic]="topic"></app-topic-title>
+          <app-topic-title [topic]="topic" style="flex: 1;"></app-topic-title>
+          <ion-button
+            fill="clear"
+            class="topic-nav"
+            (click)="slideTo(topic.number+1)"
+            *ngIf="topic.number<topics.length"
+          >
+            <ion-icon slot="icon-only" name="arrow-forward-outline"></ion-icon>
+          </ion-button>
         </div>
         <app-topic-1 *ngIf="topic.number===1"></app-topic-1>
         <app-topic-2 *ngIf="topic.number===2"></app-topic-2>
@@ -57,8 +65,15 @@
             ></ion-icon>
           </div>
         </div>
-        <div style="margin-top: 1em;" *ngIf="i === topics.length - 1">
-          <h2>Go Back Home</h2>
+        <div
+          style="margin-top: 1em;"
+          *ngIf="i === topics.length - 1"
+          (click)="slideTo(0)"
+        >
+          <ion-button fill="clear" style="color: white;">
+            <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+            Home
+          </ion-button>
         </div>
       </div>
     </ion-slide>
