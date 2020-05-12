@@ -1,7 +1,6 @@
-# Automate android build on tag push
-name: Build Android
-
-# Push whenever new tag assigned (ideally app version number)
+# Whenever a tag is pushed, create a release and upload the
+# Android debug apk
+name: Create App Release
 on:
   push:
     tags:
@@ -21,8 +20,10 @@ jobs:
           cordova-version: 8
       - name: Build debug apk
         run: ionic cordova build android
-      - name: Upload app
-        uses: actions/upload-artifact@v1
+      - name: Create release and upload apk
+        uses: ncipollo/release-action@v1
         with:
-          name: app
-          path: platforms/android/app/build/outputs/apk/debug/app-debug.apk
+          artifacts: "platforms/android/app/build/outputs/apk/debug/*.apk"
+          body: "Automated release"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          allowUpdates: true
