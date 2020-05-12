@@ -18,7 +18,6 @@ export class TopicsPage implements OnInit {
   ngOnInit() {}
 
   slideTo(index: number) {
-    console.log("sliding to index", index, this.slides);
     this.slides.slideTo(index);
   }
 
