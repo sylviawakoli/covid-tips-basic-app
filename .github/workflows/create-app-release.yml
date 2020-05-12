@@ -26,10 +26,10 @@ jobs:
         run: ionic cordova build android
       - name: Create release and upload apk
         uses: ncipollo/release-action@v1
-          with:
-            artifacts: "platforms/android/app/build/outputs/apk/debug/*.apk"
-            body: "Automated release"
-            token: ${{ secrets.GITHUB_TOKEN }}
-            allowUpdates: true
-            # Todo - remove explicit tag once working to use push tags
-            tag: "1.1.1"
+        with:
+          artifacts: "platforms/android/app/build/outputs/apk/debug/*.apk"
+          body: "Automated release"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          allowUpdates: true
+          # Todo - remove explicit tag once working to use push tags
+          tag: "1.1.1"
