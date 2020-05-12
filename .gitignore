@@ -30,4 +30,5 @@ platforms
 plugins
 www
 *.keystore
-releases
+releases/*
+!releases/.gitkeep
