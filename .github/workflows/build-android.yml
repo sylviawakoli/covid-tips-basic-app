@@ -5,23 +5,21 @@ name: Build Android
 on:
   push:
     tags:
-    - '*'
+      - "*"
 jobs:
   build:
     name: Generate APK
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v1        
+        uses: actions/checkout@v1
       - name: Install @angular/cli
         run: npm i -D -E @angular/cli
       - name: Setup Ionic Workspace
         uses: coturiv/setup-ionic@v1
         with:
           cordova-version: 8
-      - name: Build debug APK
-        run: bash ./gradlew assembleDebug --stacktrace
-      - name: Build
+      - name: Build debug apk
         run: ionic cordova build android
       - name: Upload app
         uses: actions/upload-artifact@v1
