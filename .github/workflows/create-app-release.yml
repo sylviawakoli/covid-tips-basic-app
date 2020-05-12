@@ -1,14 +1,10 @@
+# Whenever a tag is pushed, create a release and upload the
+# Android debug apk
 name: Create App Release
-
-# Push whenever new tag assigned
-# on:
-#   push:
-#     tags:
-#       - "*"
 on:
   push:
-    branches:    
-      - actions
+    tags:
+      - "*"
 jobs:
   build:
     name: Generate Debug APK
@@ -31,5 +27,3 @@ jobs:
           body: "Automated release"
           token: ${{ secrets.GITHUB_TOKEN }}
           allowUpdates: true
-          # Todo - remove explicit tag once working to use push tags
-          tag: "1.1.1"
