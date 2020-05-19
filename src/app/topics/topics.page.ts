@@ -49,4 +49,8 @@ const TOPICS = [
     title: "Talking about Demo-1-19",
     number: 6,
   },
+  {
+    title: "Tips for Children with Disabilities",
+    number: 7,
+  },
 ];

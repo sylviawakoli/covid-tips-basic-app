@@ -41,3 +41,10 @@ export class Topic5Component {}
   styleUrls: ["../topics.scss"],
 })
 export class Topic6Component {}
+
+@Component({
+  selector: "app-topic-7",
+  templateUrl: "./topic-7.html",
+  styleUrls: ["../topics.scss"],
+})
+export class Topic7Component {}
