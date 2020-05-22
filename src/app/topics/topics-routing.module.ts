@@ -7,6 +7,7 @@ import {
   Topic4Component,
   Topic5Component,
   Topic6Component,
+  Topic7Component,
 } from "./content";
 import { TopicsPage } from "./topics.page";
 
@@ -38,6 +39,10 @@ const routes: Routes = [
   {
     path: "6",
     component: Topic6Component,
+  },
+  {
+    path: "7",
+    component: Topic7Component,
   },
 ];
 
