@@ -55,3 +55,56 @@ export class Topic7Component {}
   styleUrls: ["../topics.scss"],
 })
 export class Topic8Component {}
+
+
+@Component({
+  selector: "app-topic-9",
+  templateUrl: "./topic-9.html",
+  styleUrls: ["../topics.scss"],
+})
+export class Topic9Component {}
+
+@Component({
+  selector: "app-topic-10",
+  templateUrl: "./topic-10.html",
+  styleUrls: ["../topics.scss"],
+})
+export class Topic10Component {}
+
+@Component({
+  selector: "app-topic-11",
+  templateUrl: "./topic-11.html",
+  styleUrls: ["../topics.scss"],
+})
+export class Topic11Component {}
+
+@Component({
+  selector: "app-topic-12",
+  templateUrl: "./topic-12.html",
+  styleUrls: ["../topics.scss"],
+})
+export class Topic12Component {}
+
+@Component({
+  selector: "app-topic-13",
+  templateUrl: "./topic-13.html",
+  styleUrls: ["../topics.scss"],
+})
+export class Topic13Component {}
+
+@Component({
+  selector: "app-topic-14",
+  templateUrl: "./topic-14.html",
+  styleUrls: ["../topics.scss"],
+})
+export class Topic14Component {}
+
+@Component({
+  selector: "app-topic-15",
+  templateUrl: "./topic-15.html",
+  styleUrls: ["../topics.scss"],
+})
+export class Topic15Component {}
+
+
+
