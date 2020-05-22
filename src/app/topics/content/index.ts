@@ -48,3 +48,10 @@ export class Topic6Component {}
   styleUrls: ["../topics.scss"],
 })
 export class Topic7Component {}
+
+@Component({
+  selector: "app-topic-8",
+  templateUrl: "./topic-8.html",
+  styleUrls: ["../topics.scss"],
+})
+export class Topic8Component {}
