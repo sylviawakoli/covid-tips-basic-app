@@ -8,6 +8,14 @@ import {
   Topic5Component,
   Topic6Component,
   Topic7Component,
+  Topic8Component,
+  Topic9Component,
+  Topic10Component,
+  Topic11Component,
+  Topic12Component,
+  Topic13Component,
+  Topic14Component,
+  Topic15Component,
 } from "./content";
 import { TopicsPage } from "./topics.page";
 
@@ -43,6 +51,43 @@ const routes: Routes = [
   {
     path: "7",
     component: Topic7Component,
+  },
+
+  {
+    path: "8",
+    component: Topic8Component,
+  },
+
+  {
+    path: "9",
+    component: Topic9Component,
+  },
+
+  {
+    path: "10",
+    component: Topic10Component,
+  },
+  {
+    path: "11",
+    component: Topic11Component,
+  },
+  {
+    path: "12",
+    component: Topic12Component,
+  },
+  {
+    path: "13",
+    component: Topic13Component,
+  },
+  
+  {
+    path: "14",
+    component: Topic14Component,
+  },
+  
+  {
+    path: "15",
+    component: Topic15Component,
   },
 ];
 
