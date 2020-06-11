@@ -16,6 +16,7 @@ import crowdin, {
   SourceFilesModel,
   ResponseObject,
   SourceStringsModel,
+  TranslationsModel,
 } from '@crowdin/crowdin-api-client';
 if (!(CROWDIN_TOKEN && CROWDIN_WORKSPACE_NAME && CROWDIN_PROJECT_ID)) {
   throw new Error('Crowdin config not provided in .env');
@@ -31,6 +32,7 @@ const {
   sourceFilesApi,
   uploadStorageApi,
   stringTranslationsApi,
+  translationsApi,
 } = new crowdin(credentials);
 
 let crowdinProject: ProjectsGroupsModel.Project;
@@ -45,6 +47,19 @@ export async function getProjectMeta() {
     crowdinProject = (await projectsGroupsApi.getProject(PROJECT_ID)).data;
   }
   return crowdinProject;
+}
+
+export async function getProjectDownloadUrl() {
+  console.log('downloading');
+  const { targetLanguageIds } = await getProjectMeta();
+  const build = (
+    await translationsApi.buildProject(PROJECT_ID, {
+      targetLanguageIds,
+    })
+  ).data;
+  await _waitForBuildComplete(build);
+  const dl = await translationsApi.downloadTranslations(PROJECT_ID, build.id);
+  return dl.data.url;
 }
 
 /**
@@ -64,7 +79,7 @@ export async function uploadJSONTranslationStrings(
   const filesToUpload = fs
     .readdirSync(filesDir)
     .filter((f) => f.includes('.json'));
-  const projectStrings = await listAllProjectStrings();
+  const projectStrings = await listAllProjectSourceStrings();
   // save list of strings in hashmap for more efficient lookup (as the lists could get quite long)
   // note - rest api doesn't return correct identifiers, so recreate from text
   const projectStringsHash: { [id: string]: typeof projectStrings[0] } = {};
@@ -235,7 +250,7 @@ export async function uploadCSVTranslationFiles(
  * Current workaround is to call rest api endpoints directly via their integrated http
  * client (axios), and offer some helper methods to run batched requests
  ***************************************************************************************/
-async function listAllProjectStrings() {
+async function listAllProjectSourceStrings() {
   return _crowdinBatchGet<SourceStringsModel.String>(
     `projects/${PROJECT_ID}/strings`
   );
@@ -302,4 +317,16 @@ function _generateIDFromText(text: string) {
     .trim()
     .toLowerCase()
     .replace(/[^A-Z0-9]/gi, '_');
+}
+
+async function _waitForBuildComplete(build: TranslationsModel.Build) {
+  const status = await translationsApi.checkBuildStatus(PROJECT_ID, build.id);
+  const { progress } = status.data;
+  console.log('progress', progress);
+  if (progress === 100) {
+    return status;
+  } else {
+    await new Promise((r) => setTimeout(r, 500));
+    return _waitForBuildComplete(build);
+  }
 }

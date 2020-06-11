@@ -12,7 +12,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "i18n:extract": "ngx-translate-extract --input ./src --output ./translations/assets/i18n/template.json --null-as-default-value --replace --format json",
-    "i18n:upload": "ts-node --project tsconfig.scripts.json translations/scripts/upload"
+    "i18n:upload": "ts-node --project tsconfig.scripts.json translations/scripts/upload",
+    "i18n:download": "ts-node --project tsconfig.scripts.json translations/scripts/download"
   },
   "private": true,
   "dependencies": {
@@ -42,10 +43,13 @@
     "@angular/compiler-cli": "~8.2.14",
     "@angular/language-service": "~8.2.14",
     "@ionic/angular-toolkit": "^2.1.1",
+    "@types/adm-zip": "^0.4.33",
     "@types/fs-extra": "^9.0.1",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
+    "@types/papaparse": "^5.0.4",
+    "adm-zip": "^0.4.14",
     "codelyzer": "^5.0.0",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
@@ -64,6 +68,7 @@
     "karma-jasmine-html-reporter": "^1.4.0",
     "log-update": "^4.0.0",
     "ngx-translate-extract": "^1.0.0",
+    "papaparse": "^5.2.0",
     "protractor": "~5.4.0",
     "ts-node": "^8.10.2",
     "tslint": "~5.15.0",
