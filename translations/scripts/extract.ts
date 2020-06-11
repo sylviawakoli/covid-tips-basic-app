@@ -3,7 +3,7 @@ import * as fs from 'fs-extra';
 
 function main() {
   // extract strings via ngx-extract
-  const outFile = './src/assets/i81n/app-strings.json';
+  const outFile = './src/assets/i18n/app-strings.json';
   spawnSync(
     `npx ngx-translate-extract --input ./src --output ${outFile} --key-as-default-value --replace --format json`,
     { shell: true, stdio: 'inherit' }
