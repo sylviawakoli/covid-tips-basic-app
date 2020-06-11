@@ -11,7 +11,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "i18n:extract": "ngx-translate-extract --input ./src --output ./translations/assets/i18n/template.json --null-as-default-value --replace --format json",
+    "i18n:extract": "ts-node --project tsconfig.scripts.json translations/scripts/extract",
     "i18n:upload": "ts-node --project tsconfig.scripts.json translations/scripts/upload",
     "i18n:download": "ts-node --project tsconfig.scripts.json translations/scripts/download"
   },
