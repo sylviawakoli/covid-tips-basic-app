@@ -15,6 +15,6 @@ function main() {
     { shell: true, stdio: "inherit" }
   );
   // create additional copy as default en strings
-  fs.copyFileSync(outFile, outFile.replace("app-strings", "app-strings-en"));
+  fs.copyFileSync(outFile, outFile.replace("app-strings", "app-strings.en"));
 }
 main();
