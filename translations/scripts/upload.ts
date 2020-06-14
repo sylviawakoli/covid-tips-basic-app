@@ -2,6 +2,7 @@ import * as fs from 'fs-extra';
 import * as XLSX from 'xlsx';
 import * as path from 'path';
 import * as crowdin from './crowdin-api';
+import { WorkSheet } from 'xlsx/types';
 
 const INPUT_DIR = path.join(process.cwd(), 'translations/input-files');
 const OUTPUT_DIR = path.join(process.cwd(), 'translations/output-files');
@@ -16,7 +17,7 @@ const TARGET_SHEETS = [
   'Tipsheet3',
   'Tipsheet4',
   'Tipsheet5',
-  'Tipsheet6',
+  'Tipsheet6'
 ];
 
 /***************************************************************************
@@ -61,21 +62,21 @@ async function runQualityCheck(lang: string, xlsxFilepath: string) {
     if (!xlsxData.SheetNames.includes(sheetName)) {
       logError(`does not contain [${sheetName}]`, xlsxFilepath, sheetName);
     }
-    const ws = xlsxData.Sheets[sheetName];
+    const ws: WorkSheet = xlsxData.Sheets[sheetName];
     // TEST - Cell A1 contains 'English' as start of english translation column
-    const A1Val = ws['A1'].v;
-    if (A1Val !== 'English') {
+    const A2Val = ws['A2'].v;
+    if (A2Val !== 'English') {
       logError(
-        `Cell [A1] should contain [English] column header`,
+        `Cell [A2] should contain [English] column header`,
         xlsxFilepath,
         sheetName
       );
     }
     // TEST - Cell B1 contains 'Translation' as start of translation column
-    const B1Val = ws['B1'].v;
-    if (!B1Val.includes('Translation')) {
+    const B2Val = ws['B2'].v;
+    if (!B2Val.includes('Translation')) {
       logError(
-        `Cell [B1] should contain [Translation-] column header`,
+        `Cell [B2] should contain [Translation-] column header`,
         xlsxFilepath,
         sheetName
       );
@@ -107,15 +108,26 @@ function createTranslationJSON(lang: string, xlsxFilepath: string) {
   const xlsxData = XLSX.readFile(xlsxFilepath);
   fs.ensureDirSync(`${OUTPUT_DIR}/${lang}`);
   for (const sheetName of TARGET_SHEETS) {
-    const ws = xlsxData.Sheets[sheetName];
+    const ws: WorkSheet = xlsxData.Sheets[sheetName];
     const jsonArr = XLSX.utils.sheet_to_json(ws);
     // this produces json in format [{english:'hello',translated:'hola'}...]
     // convert into dictionary format {"hello":"hola","goodbye":"adios"}
-    const dictionary = {};
-    jsonArr.forEach((el) => {
-      const mapping = Object.values(el);
-      dictionary[mapping[0]] = mapping[1];
-    });
+    const dictionary: { [englishKey: string]: string } = {};
+    for (var i = 2; i < 1000; i++) {
+      const keyCell = ws['A' + i];
+      const valueCell = ws['B' + i];
+      try {
+        console.log("key: ", keyCell.v, "value: ", valueCell.v);
+      } catch (ex) {
+        console.log("error ", ex);
+      }
+      if (keyCell && keyCell.v && keyCell.v.trim && keyCell.v.trim().length > 0 
+        && valueCell && valueCell.v && keyCell.v.trim && keyCell.v.trim().length > 0) {
+          dictionary[keyCell.v] = valueCell.v;
+      } else {
+        break;
+      }
+    }
     fs.writeJSONSync(`${OUTPUT_DIR}/${lang}/${sheetName}.json`, dictionary);
   }
 }
