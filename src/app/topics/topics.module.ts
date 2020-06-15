@@ -1,8 +1,8 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
-import { IonicModule } from "@ionic/angular";
-import { TopicsPageRoutingModule } from "./topics-routing.module";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
+import { TopicsPageRoutingModule } from './topics-routing.module';
 import {
   Topic1Component,
   Topic2Component,
@@ -19,12 +19,12 @@ import {
   Topic13Component,
   Topic14Component,
   Topic15Component,
-
-} from "./content";
-import { TopicHeaderComponent } from "./content/nav-header";
-import { TopicsPage } from "./topics.page";
-import { ComponentsModule } from "src/app/components/components.module";
-import { TopicTitleComponent } from "./content/topic-title";
+} from './content';
+import { TopicHeaderComponent } from './content/nav-header';
+import { TopicsPage } from './topics.page';
+import { ComponentsModule } from 'src/app/components/components.module';
+import { TopicTitleComponent } from './content/topic-title';
+import { TranslateModule } from '@ngx-translate/core';
 
 const TOPIC_CONTENT_COMPONENTS = [
   Topic1Component,
@@ -54,6 +54,7 @@ const TOPIC_CONTENT_COMPONENTS = [
     IonicModule,
     TopicsPageRoutingModule,
     ComponentsModule,
+    TranslateModule.forChild(),
   ],
   declarations: TOPIC_CONTENT_COMPONENTS,
   exports: [TopicHeaderComponent, TopicTitleComponent],
