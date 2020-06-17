@@ -12,13 +12,21 @@
     "build": "ng build",
     "build:prod": "ionic build --prod",
     "test": "ng test",
-    "lint": "eslint --ext .ts,.js src/",
+    "lint": "eslint --ext .ts,.js src/ --fix",
     "e2e": "ng e2e",
     "i18n:extract": "ts-node --project tsconfig.scripts.json translations/scripts/extract",
     "i18n:upload": "ts-node --project tsconfig.scripts.json translations/scripts/upload",
     "i18n:download": "ts-node --project tsconfig.scripts.json translations/scripts/download"
   },
   "private": true,
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
+  },
   "dependencies": {
     "@angular-eslint/builder": "0.0.1-alpha.32",
     "@angular/common": "~8.2.14",
@@ -100,13 +108,5 @@
     "platforms": [
       "android"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,css,md}": "prettier --write"
   }
 }
