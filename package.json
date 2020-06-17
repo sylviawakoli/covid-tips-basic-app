@@ -12,7 +12,7 @@
     "build": "ng build",
     "build:prod": "ionic build --prod",
     "test": "ng test",
-    "lint": "eslint --ext .ts,.js src/ --fix",
+    "lint": "eslint --ext .ts,.js src/",
     "e2e": "ng e2e",
     "i18n:extract": "ts-node --project tsconfig.scripts.json translations/scripts/extract",
     "i18n:upload": "ts-node --project tsconfig.scripts.json translations/scripts/upload",
@@ -25,7 +25,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,css,md}": "prettier --write"
+    "*.{js,ts,css,scss,md}": "prettier --write"
   },
   "dependencies": {
     "@angular-eslint/builder": "0.0.1-alpha.32",
