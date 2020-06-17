@@ -3,6 +3,9 @@
   "version": "1.2.0",
   "author": "IDEMS International",
   "homepage": "https://idems.international",
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
