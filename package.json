@@ -12,7 +12,7 @@
     "build": "ng build",
     "build:prod": "ionic build --prod",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "eslint --ext .ts,.js src/",
     "e2e": "ng e2e",
     "i18n:extract": "ts-node --project tsconfig.scripts.json translations/scripts/extract",
     "i18n:upload": "ts-node --project tsconfig.scripts.json translations/scripts/upload",
@@ -20,6 +20,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-eslint/builder": "0.0.1-alpha.32",
     "@angular/common": "~8.2.14",
     "@angular/core": "~8.2.14",
     "@angular/forms": "~8.2.14",
@@ -53,6 +54,8 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "@types/papaparse": "^5.0.4",
+    "@typescript-eslint/eslint-plugin": "^3.3.0",
+    "@typescript-eslint/parser": "^3.3.0",
     "adm-zip": "^0.4.14",
     "codelyzer": "^5.0.0",
     "cordova-plugin-device": "2.0.2",
@@ -62,7 +65,12 @@
     "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-whitelist": "1.3.3",
     "dotenv": "^8.2.0",
+    "eslint": "^7.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-prettier": "^3.1.4",
     "fs-extra": "^9.0.1",
+    "husky": "^4.2.5",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
@@ -70,11 +78,12 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
+    "lint-staged": "^10.2.10",
     "log-update": "^4.0.0",
     "papaparse": "^5.2.0",
+    "prettier": "2.0.5",
     "protractor": "~5.4.0",
     "ts-node": "^8.10.2",
-    "tslint": "~5.15.0",
     "typescript": "~3.4.3",
     "xlsx": "^0.16.2"
   },
@@ -91,5 +100,13 @@
     "platforms": [
       "android"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
   }
 }
