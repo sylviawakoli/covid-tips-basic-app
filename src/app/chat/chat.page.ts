@@ -13,7 +13,7 @@ export class ChatPage implements OnInit {
   responseOptions: ChatResponseOption[] = [];
 
   botAnimOptions: AnimationOptions = {
-    path: '/assets/lottie-animations/Character_Walk_In_2nd_passv3.json',
+    path: '/assets/lottie-animations/Character_Walk_In_2nd_passv6.json',
   };
 
   constructor() { }
