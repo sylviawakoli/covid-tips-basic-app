@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatMessage, mockMessageGenerator, ChatResponseOption } from './message.model';
+import { AnimationOptions } from 'ngx-lottie';
 
 @Component({
   selector: 'app-chat',
@@ -10,6 +11,10 @@ export class ChatPage implements OnInit {
 
   messages: ChatMessage[] = [];
   responseOptions: ChatResponseOption[] = [];
+
+  botAnimOptions: AnimationOptions = {
+    path: '/assets/lottie-animations/Character_Walk_In_2nd_passv3.json',
+  };
 
   constructor() { }
 

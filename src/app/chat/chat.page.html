@@ -9,7 +9,10 @@
 
 <ion-content>
   <div class="messages">
-    <img class="bot-blob" src="assets/img/waving_coffee.svg">
+    <!--<img class="bot-blob" src="assets/img/waving_coffee.svg">-->
+    <div class="bot-blob">
+      <ng-lottie [options]="botAnimOptions"></ng-lottie>
+    </div>
     <div *ngFor="let msg of messages"  [class]="msg.sender === 'bot' ? 'msg-container bot-msg' : 'msg-container user-msg'">
       <div *ngIf="msg.sender === 'bot'">
         <svg width="15" height="20" viewBox="0 0 15 20" fill="none" xmlns="http://www.w3.org/2000/svg">

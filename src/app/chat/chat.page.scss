@@ -5,8 +5,10 @@
 }
 
 .bot-blob {
-    width: 100px;
+    width: 300px;
     align-self: flex-start;
+    position: relative;
+    left: 200px;
 }
 
 .msg-container {
