@@ -14,7 +14,8 @@
   <ion-content class="bot-messages">
     <div class="messages">
       <!--<img class="bot-blob" src="assets/img/waving_coffee.svg">-->
-      <div *ngFor="let msg of messages"  [class]="msg.sender === 'bot' ? 'msg-container bot-msg' : 'msg-container user-msg'">
+      <div *ngFor="let msg of messages"
+        [class]="msg.sender === 'bot' ? 'msg-container bot-msg' : 'msg-container user-msg'">
         <div *ngIf="msg.sender === 'bot'">
           <svg width="15" height="20" viewBox="0 0 15 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M15 20V0L0 10L15 20Z" fill="grey" />
@@ -32,10 +33,10 @@
     </div>
   </ion-content>
   <div class="response-options">
-    <div *ngFor="let option of responseOptions" class="response-option">
+    <div *ngFor="let option of responseOptions" class="response-option" (click)="selectResponseOption(option)">
       {{option.text}}
     </div>
     <img class="user-blob" src="assets/img/waving_you_blob1.svg">
   </div>
-  
+
 </ion-content>

@@ -11,6 +11,7 @@ import { ChatPage } from './chat.page';
 
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
+import { NotificationService } from '../services/notification.service';
 
 // Note we need a separate function as it's required
 // by the AOT compiler.
@@ -27,6 +28,7 @@ export function lottiePlayerFactory() {
     ChatPageRoutingModule,
     LottieModule.forRoot({ player: lottiePlayerFactory }),
   ],
-  declarations: [ChatPage]
+  declarations: [ChatPage],
+  providers: [NotificationService]
 })
-export class ChatPageModule {}
+export class ChatPageModule { }

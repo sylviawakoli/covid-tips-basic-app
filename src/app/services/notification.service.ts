@@ -7,7 +7,7 @@ import { environment } from "src/environments/environment";
 @Injectable({ providedIn: "root" })
 export class NotificationService {
   // NOTE - use ionic native http instead of angular/browser to avoid cors issues
-  constructor(private fcm: FCM, private device: Device, private http: HTTP) {}
+  constructor(private fcm: FCM, private device: Device, private http: HTTP) { }
   /**
    * Initialisation is called from app.component.ts after platform ready
    * (currently only when running on device/cordova)
