@@ -6,6 +6,7 @@ import { environment } from "src/environments/environment";
 
 @Injectable({ providedIn: "root" })
 export class NotificationService {
+  fcm_token: string;
   // NOTE - use ionic native http instead of angular/browser to avoid cors issues
   constructor(private fcm: FCM, private device: Device, private http: HTTP) {}
   /**
@@ -44,15 +45,32 @@ export class NotificationService {
   }
 
   /**
+   * Send a message to rapidpro servers
+   */
+  async sendRapidproMessage(msg: string) {
+    const { receiveUrl } = environment.rapidPro;
+    const from = this.device.uuid;
+    const fcm_token = this.fcm_token;
+    const data: IRapidProMessageData = { msg, fcm_token, from };
+    try {
+      const res = await this.http.post(receiveUrl, data, {});
+      console.log("message sent", res);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  /**
    * When device starts inform rapidpro of device id token for
    * receiving push notifications. Link to an ID unique to the device
    * so that token updates do not create new rapidpro contacts
    */
   async registerRapidproToken(fcm_token: string) {
+    this.fcm_token = fcm_token;
     const { contactRegisterUrl } = environment.rapidPro;
     const urn = this.device.uuid;
     const name = `app-${urn}`;
-    const data: IRegistrationData = { urn, fcm_token, name };
+    const data: IRapidProRegistrationData = { urn, fcm_token, name };
     try {
       const res = await this.http.post(contactRegisterUrl, data, {});
       console.log("token registered", res);
@@ -62,7 +80,13 @@ export class NotificationService {
   }
 }
 
-interface IRegistrationData {
+interface IRapidProMessageData {
+  msg: string;
+  fcm_token: string;
+  from: string;
+}
+
+interface IRapidProRegistrationData {
   urn: string; // rapidpro contact identifier
   fcm_token: string;
   name?: string;
