@@ -10,12 +10,15 @@ export type MockChatMessage = { delay: number } & ChatMessage;
 
 export interface ChatResponseOption {
     text: string;
+    customAction?: ResponseCustomAction;
 }
+
+export type ResponseCustomAction = "bot-leave" | "goto-home-screen" | "bot-return";
 
 export function mockMessageGenerator(callback: (msg: ChatMessage) => void) {
     let mockMessages: MockChatMessage[] = [
         {
-            delay: 2000,
+            delay: 3000,
             sender: "bot",
             text: "Hello! How can I help you today?",
             responseOptions: [
@@ -30,7 +33,7 @@ export function mockMessageGenerator(callback: (msg: ChatMessage) => void) {
             text: "Advice"
         },
         {
-            delay: 8000,
+            delay: 9000,
             sender: "bot",
             text: "What would you like advice about?",
             responseOptions: [
@@ -38,7 +41,47 @@ export function mockMessageGenerator(callback: (msg: ChatMessage) => void) {
                 { text: "Teens" },
                 { text: "Other" }
             ]
-        }
+        },
+        {
+            delay: 12000,
+            sender: "user",
+            text: "Teens",
+        },
+        {
+            delay: 15000,
+            sender: "bot",
+            text: "Parenting teens can be tough. It can be tough to deal with people caught between being a child and an adult."
+                + "Do you need any other help today?",
+            responseOptions: [
+                { text: "Yes" },
+                { text: "No", customAction: "bot-leave" }
+            ]
+        },
+        {
+            delay: 18000,
+            sender: "user",
+            text: "No",
+            responseOptions: [
+                { text: "No", customAction: "bot-leave"}
+            ]
+        },
+        {
+            delay: 21000,
+            sender: "bot",
+            text: "Okay chat to you later!",
+            responseOptions: [
+                { text: "Need more help", customAction: "bot-return" },
+                { text: "Go to Home Screen", customAction: "goto-home-screen" }
+            ]
+        },
+        {
+            delay: 24000,
+            sender: "user",
+            text: "Need more help",
+            responseOptions: [
+                { text: "Need more help", customAction: "bot-return" },
+            ]
+        },
     ];
     mockMessages.forEach((msg) => {
         setTimeout(() => {

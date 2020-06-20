@@ -1,14 +1,18 @@
 .messages {
     padding: 10px;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .bot-blob {
-    width: 300px;
-    align-self: flex-start;
-    position: relative;
-    left: 200px;
+    width: 80vw;
+    position: absolute;
+    left: -40vw;
+    top: 20px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 40px;
+    z-index: 10;
 }
 
 .msg-container {
@@ -18,8 +22,10 @@
     margin-bottom: 20px;
     width: 90vw;
 
-    &:nth-child(2) {
-        max-width: calc(95vw - 200px);
+    &:nth-child(1) {
+        max-width: calc(60vw - 50px);
+        position: relative;
+        left: 40vw;
     }
 
     .msg-bubble {
@@ -47,6 +53,15 @@
     }
 }
 
+.response-options {
+    position: absolute;
+    z-index: 2;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
 .response-option {
     color: darkcyan;
     border-color: darkcyan;
@@ -57,12 +72,14 @@
     border-radius: 30px;
     border-style: solid;
     border-width: 3px;
+    width: calc(100vw - 100px);
 }
 
 .user-blob {
     position: absolute;
     bottom: 20px;
     right: 20px;
+    z-index: 3;
 }
 
 ion-content{
