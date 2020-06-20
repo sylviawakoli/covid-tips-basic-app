@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { FCM } from "@ionic-native/fcm/ngx";
-import { environment } from "src/environments/environment";
 import { Device } from "@ionic-native/device/ngx";
 import { HTTP } from "@ionic-native/http/ngx";
+import { environment } from "src/environments/environment";
 
 @Injectable({ providedIn: "root" })
 export class NotificationService {
@@ -25,13 +25,9 @@ export class NotificationService {
       (v) => console.log("subscription", v),
       (err) => console.log("err", err)
     );
-    this.fcm.onNotification().subscribe((data) => {
-      if (data.wasTapped) {
-        console.log("Received in background", data);
-      } else {
-        console.log("Received in foreground", data);
-      }
-    });
+    this.fcm
+      .onNotification()
+      .subscribe((data) => this.handleNotification(data as IRapidProMessage));
     this.fcm.onTokenRefresh().subscribe((token) => {
       this.registerRapidproToken(token);
     });
@@ -40,6 +36,11 @@ export class NotificationService {
         console.log("Has permission!");
       }
     });
+  }
+
+  handleNotification(message: IRapidProMessage) {
+    console.log("message received", message);
+    alert(`Message Received: ${message.message}`);
   }
 
   /**
@@ -51,7 +52,7 @@ export class NotificationService {
     const { contactRegisterUrl } = environment.rapidPro;
     const urn = this.device.uuid;
     const name = `app-${urn}`;
-    const data: IRegistrationData = { urn, fcm_token };
+    const data: IRegistrationData = { urn, fcm_token, name };
     try {
       const res = await this.http.post(contactRegisterUrl, data, {});
       console.log("token registered", res);
@@ -67,4 +68,20 @@ interface IRegistrationData {
   name?: string;
 }
 
-interface IRapidProMessage {}
+interface IRapidProMessage {
+  body: string;
+  message: string;
+  message_id: string;
+  title: string;
+  type: string;
+  wasTapped: boolean; // informs whether message received in app foreground or background
+}
+
+export const MOCK_RAPIDPRO_MESSAGE: IRapidProMessage = {
+  body: "Hello from Rapidpro",
+  message: "Hello from Rapidpro",
+  message_id: "5",
+  title: "Firebase Cloud Messaging - Tips Demo App",
+  type: "rapidpro",
+  wasTapped: false,
+};

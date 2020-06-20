@@ -1,6 +1,8 @@
 # Notifications
 
-The app uses [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) to handle push notifications.
+The app uses [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) to handle push notifications. To join the firebase project, request an invite from the development team.
+
+The project can then be accessed at https://console.firebase.google.com/
 
 ## Receiving Messages
 
@@ -29,10 +31,6 @@ _Add key to rapidpro channel_
 
 TODO - methods and config should ideally be moved to server-side function for security
 
-## Firebase
+## Debugging
 
-Messaging is handled through firebase. To join the firebase project, request an invite from the development team.
-
-The project can then be accessed at https://console.firebase.google.com/
-
-http://34.75.7.249/channels/channel/configuration/fdd744a4-82fa-4263-b9fe-6d9c3a516b29/
+As notifications can only be sent/received on device, it cannot be debugged in a standard web browser. It is therefore recommended to use an android emulator to run the app, and chome remote debugging tools to view console logs (chrome://inspect/#devices)
