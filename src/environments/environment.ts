@@ -16,9 +16,9 @@ export const environment = {
   },
   rapidPro: {
     contactRegisterUrl:
-      "https://rapidpro.idems.international/c/fcm/f9988448-d8f3-4709-90a5-60dc49f8096d/register",
+      "https://rapidpro.idems.international/c/fcm/a7e3bf90-9bcd-4ea3-92a4-9274a79de401/register",
     receiveUrl:
-      "https://rapidpro.idems.international/c/fcm/f9988448-d8f3-4709-90a5-60dc49f8096d/receive",
+      "https://rapidpro.idems.international/c/fcm/a7e3bf90-9bcd-4ea3-92a4-9274a79de401/receive",
   },
 };
 

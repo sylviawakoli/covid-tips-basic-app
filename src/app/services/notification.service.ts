@@ -6,8 +6,12 @@ import { environment } from "src/environments/environment";
 
 @Injectable({ providedIn: "root" })
 export class NotificationService {
+  private messageHandlers: {
+    [id: string]: (message: IRapidProMessage) => void;
+  } = {};
+
   // NOTE - use ionic native http instead of angular/browser to avoid cors issues
-  constructor(private fcm: FCM, private device: Device, private http: HTTP) { }
+  constructor(private fcm: FCM, private device: Device, private http: HTTP) {}
   /**
    * Initialisation is called from app.component.ts after platform ready
    * (currently only when running on device/cordova)
@@ -41,6 +45,13 @@ export class NotificationService {
   handleNotification(message: IRapidProMessage) {
     console.log("message received", message);
     alert(`Message Received: ${message.message}`);
+    Object.keys(this.messageHandlers).forEach((id) => {
+      this.messageHandlers[id](message);
+    });
+  }
+
+  addMessageHandler(id: string, handler: (message: IRapidProMessage) => void) {
+    this.messageHandlers[id] = handler;
   }
 
   /**
@@ -68,7 +79,7 @@ interface IRegistrationData {
   name?: string;
 }
 
-interface IRapidProMessage {
+export interface IRapidProMessage {
   body: string;
   message: string;
   message_id: string;
