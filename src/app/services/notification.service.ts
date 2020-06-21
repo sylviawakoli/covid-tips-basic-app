@@ -110,6 +110,7 @@ export interface IRapidProMessage {
   title: string;
   type: string;
   wasTapped: boolean; // informs whether message received in app foreground or background
+  quick_replies?: string; // string with JSON array. e.g "["English","Malay"]"
 }
 
 export const MOCK_RAPIDPRO_MESSAGE: IRapidProMessage = {

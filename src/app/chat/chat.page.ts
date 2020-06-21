@@ -1,12 +1,10 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import {
   ChatMessage,
-  mockMessageGenerator,
   ChatResponseOption,
   ResponseCustomAction,
 } from "./message.model";
 import { AnimationOptions } from "ngx-lottie";
-import { IonContent } from "@ionic/angular";
 import {
   NotificationService,
   IRapidProMessage,
@@ -35,7 +33,7 @@ export class ChatPage implements OnInit {
   }
 
   ngOnInit() {
-    mockMessageGenerator((msg) => {
+    /* mockMessageGenerator((msg) => {
       if (
         msg.sender === "user" &&
         msg.responseOptions &&
@@ -45,17 +43,31 @@ export class ChatPage implements OnInit {
         this.doCustomResponseAction(msg.responseOptions[0].customAction);
       }
       this.onReceiveMessage(msg);
-    });
+    }); */
+    this.notificationService.sendRapidproMessage("start_demo");
   }
 
   onReceiveRapidProMessage(rapidMsg: IRapidProMessage) {
     let chatMsg: ChatMessage = {
       sender: "bot",
       text: rapidMsg.body,
-      dateReceived: new Date(),
-      dateSent: new Date(),
     };
-    this.onReceiveMessage(chatMsg);
+    if (rapidMsg.quick_replies) {
+      try {
+        let words: string[] = JSON.parse(rapidMsg.quick_replies);
+        if (rapidMsg.quick_replies.indexOf("[") > -1) {
+          words = JSON.parse(rapidMsg.quick_replies);
+        } else {
+          words = rapidMsg.quick_replies.split(",");
+        }
+        chatMsg.responseOptions = words.map((word) => ({ text: word }));
+      } catch (ex) {
+        console.log("Error parsing quick replies", ex);
+      }
+    }
+    setTimeout(() => {
+      this.onReceiveMessage(chatMsg);
+    });
   }
 
   onReceiveMessage(msg: ChatMessage) {
@@ -106,5 +118,6 @@ export class ChatPage implements OnInit {
     if (option.customAction) {
       this.doCustomResponseAction(option.customAction);
     }
+    this.notificationService.sendRapidproMessage(option.text);
   }
 }
