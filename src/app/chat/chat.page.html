@@ -34,11 +34,10 @@
       </div>
     </div>
   </ion-content>
-  <div class="response-options">
+  <ion-content class="response-options">
     <div *ngFor="let option of responseOptions" class="response-option" (click)="selectResponseOption(option)">
       {{option.text}}
     </div>
-    <img class="user-blob" src="assets/img/waving_you_blob1.svg">
-  </div>
-
+  </ion-content>
+  <img class="user-blob" src="assets/img/waving_you_blob1.svg">
 </ion-content>

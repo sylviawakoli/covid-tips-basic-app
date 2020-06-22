@@ -53,11 +53,11 @@
   margin-bottom: 20px;
   width: 90vw;
 
-  /* &:nth-child(1) {
-    max-width: calc(60vw - 50px);
+  &:nth-child(1) {
+    max-width: calc(75vw - 50px);
     position: relative;
-    left: 40vw;
-  } */
+    left: 20vw;
+  }
 
   .msg-bubble {
     background-color: grey;
@@ -91,6 +91,7 @@
   left: 0px;
   right: 0px;
   background-color: rgba(255, 255, 255, 0.5);
+  max-height: 50vh;
 }
 
 .response-option {

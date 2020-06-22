@@ -18,6 +18,7 @@ import {
 })
 export class ChatPage implements OnInit {
   messages: ChatMessage[] = [];
+  allMessages: ChatMessage[] = [];
   responseOptions: ChatResponseOption[] = [];
 
   botBlobState:
@@ -82,27 +83,53 @@ export class ChatPage implements OnInit {
     });
   }
 
-  onReceiveMessage(msg: ChatMessage) {
-    console.log("Got to the bit where I do something with the messages!", msg);
-    msg.dateReceived = new Date();
-    this.messages = this.messages.concat([msg]);
-    if (msg.sender === "bot") {
-      /* if (this.botBlobState === "still") {
+  onReceiveMessage(message: ChatMessage) {
+    console.log(
+      "Got to the bit where I do something with the messages!",
+      message
+    );
+    message.dateReceived = new Date();
+    this.allMessages.push(message);
+    if (message.sender === "bot") {
+      if (this.botBlobState === "still") {
         setTimeout(() => {
           this.botAnimOptions = {
             path: "assets/lottie-animations/TalkingGesture_Pass_v1.json",
             loop: false,
           };
         });
-      } */
-      if (msg.responseOptions) {
-        this.responseOptions = msg.responseOptions;
-      } else {
-        this.responseOptions = [];
       }
+      this.responseOptions = message.responseOptions
+        ? message.responseOptions
+        : [];
     } else {
       this.responseOptions = [];
     }
+    /* if (this.allMessages.filter((msg) => msg.sender === "user").length > 0) {
+      this.messages = [];
+      for (var i = this.allMessages.length - 1; i > 0; i--) {
+        if (this.allMessages[i].sender !== message.sender) {
+          this.messages.push(this.allMessages[i]);
+          break;
+        } else {
+          this.messages.push(this.allMessages[i]);
+        }
+      }
+    } else {
+      this.messages = this.allMessages;
+    } 
+    this.messages = this.messages.sort((a, b) => a.dateReceived.getTime() - b.dateReceived.getTime());
+    */
+    /* let botMessages = this.allMessages.filter((msg) => msg.sender === "bot");
+    let userMessages = this.allMessages.filter((msg) => msg.sender === "user");
+    this.messages = [];
+    if (botMessages.length > 0) {
+      this.messages.push(botMessages.pop());
+    }
+    if (userMessages.length > 0) {
+      this.messages.push(userMessages.pop());
+    } */
+    this.messages = this.allMessages.slice(this.allMessages.length - 2);
     this.cd.detectChanges();
   }
 
