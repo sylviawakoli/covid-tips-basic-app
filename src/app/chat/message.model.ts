@@ -1,7 +1,6 @@
 export interface ChatMessage {
   sender: "user" | "bot";
   text: string;
-  dateSent?: Date;
   dateReceived?: Date;
   responseOptions?: ChatResponseOption[];
 }

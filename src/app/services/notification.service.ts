@@ -3,12 +3,11 @@ import { FCM } from "@ionic-native/fcm/ngx";
 import { Device } from "@ionic-native/device/ngx";
 import { HTTP } from "@ionic-native/http/ngx";
 import { environment } from "src/environments/environment";
+import { Subject } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class NotificationService {
-  private messageHandlers: {
-    [id: string]: (message: IRapidProMessage) => void;
-  } = {};
+  public messageSubject: Subject<IRapidProMessage> = new Subject();
 
   fcm_token: string;
   // NOTE - use ionic native http instead of angular/browser to avoid cors issues
@@ -45,16 +44,13 @@ export class NotificationService {
 
   handleNotification(message: IRapidProMessage) {
     console.log("message received", message);
-    alert(`Message Received: ${message.message}`);
-    Object.keys(this.messageHandlers).forEach((id) => {
-      this.messageHandlers[id](message);
+    // alert(`Message Received: ${message.message}`);
+    setTimeout(() => {
+      if (message) {
+        this.messageSubject.next(message);
+      }
     });
   }
-
-  addMessageHandler(id: string, handler: (message: IRapidProMessage) => void) {
-    this.messageHandlers[id] = handler;
-  }
-
   /**
    * Send a message to rapidpro servers
    */

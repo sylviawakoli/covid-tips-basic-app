@@ -1,8 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import {
   ChatMessage,
   ChatResponseOption,
   ResponseCustomAction,
+  mockMessageGenerator,
 } from "./message.model";
 import { AnimationOptions } from "ngx-lottie";
 import {
@@ -19,32 +20,47 @@ export class ChatPage implements OnInit {
   messages: ChatMessage[] = [];
   responseOptions: ChatResponseOption[] = [];
 
+  botBlobState:
+    | "walking-in"
+    | "walking-out"
+    | "talking"
+    | "run-in"
+    | "still"
+    | "absent";
   backgroundBlobVisible: boolean = false;
   botAnimOptions: AnimationOptions = {
     loop: false,
     path: "/assets/lottie-animations/Walk_In_Entrance_Pass_v2.json",
   };
 
-  constructor(private notificationService: NotificationService) {
-    this.notificationService.addMessageHandler(
-      "chat-screen",
-      this.onReceiveRapidProMessage
-    );
-  }
+  constructor(
+    private notificationService: NotificationService,
+    private cd: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
-    /* mockMessageGenerator((msg) => {
-      if (
-        msg.sender === "user" &&
-        msg.responseOptions &&
-        msg.responseOptions[0] &&
-        msg.responseOptions[0].customAction
-      ) {
-        this.doCustomResponseAction(msg.responseOptions[0].customAction);
-      }
-      this.onReceiveMessage(msg);
-    }); */
-    this.notificationService.sendRapidproMessage("start_demo");
+    if (!window["cordova"]) {
+      mockMessageGenerator((msg) => {
+        if (
+          msg.sender === "user" &&
+          msg.responseOptions &&
+          msg.responseOptions[0] &&
+          msg.responseOptions[0].customAction
+        ) {
+          this.doCustomResponseAction(msg.responseOptions[0].customAction);
+        }
+        this.onReceiveMessage(msg);
+      });
+    } else {
+      this.notificationService.messageSubject
+        .asObservable()
+        .subscribe((msg) => {
+          this.onReceiveRapidProMessage(msg);
+        });
+      setTimeout(() => {
+        this.notificationService.sendRapidproMessage("start_demo");
+      }, 1000);
+    }
   }
 
   onReceiveRapidProMessage(rapidMsg: IRapidProMessage) {
@@ -54,13 +70,9 @@ export class ChatPage implements OnInit {
     };
     if (rapidMsg.quick_replies) {
       try {
-        let words: string[] = JSON.parse(rapidMsg.quick_replies);
-        if (rapidMsg.quick_replies.indexOf("[") > -1) {
-          words = JSON.parse(rapidMsg.quick_replies);
-        } else {
-          words = rapidMsg.quick_replies.split(",");
-        }
-        chatMsg.responseOptions = words.map((word) => ({ text: word }));
+        chatMsg.responseOptions = JSON.parse(
+          rapidMsg.quick_replies
+        ).map((word) => ({ text: word }));
       } catch (ex) {
         console.log("Error parsing quick replies", ex);
       }
@@ -71,32 +83,27 @@ export class ChatPage implements OnInit {
   }
 
   onReceiveMessage(msg: ChatMessage) {
-    msg.dateSent = new Date();
+    console.log("Got to the bit where I do something with the messages!", msg);
     msg.dateReceived = new Date();
-    this.messages.push(msg);
+    this.messages = this.messages.concat([msg]);
     if (msg.sender === "bot") {
-      this.backgroundBlobVisible = true;
-      setTimeout(() => {
-        this.botAnimOptions = {
-          path: "assets/lottie-animations/TalkingGesture_Pass_v1.json",
-          loop: false,
-        };
-      });
-      setTimeout(() => {
-        this.backgroundBlobVisible = false;
-      }, 300);
+      /* if (this.botBlobState === "still") {
+        setTimeout(() => {
+          this.botAnimOptions = {
+            path: "assets/lottie-animations/TalkingGesture_Pass_v1.json",
+            loop: false,
+          };
+        });
+      } */
       if (msg.responseOptions) {
         this.responseOptions = msg.responseOptions;
       } else {
         this.responseOptions = [];
       }
+    } else {
+      this.responseOptions = [];
     }
-  }
-
-  loopCompleted() {
-    setTimeout(() => {
-      this.backgroundBlobVisible = false;
-    }, 1500);
+    this.cd.detectChanges();
   }
 
   doCustomResponseAction(action: ResponseCustomAction) {
@@ -105,11 +112,15 @@ export class ChatPage implements OnInit {
         loop: false,
         path: "/assets/lottie-animations/Walk_Out_Exit_Pass_v2.json",
       };
+      this.botBlobState = "walking-out";
+      setTimeout(() => (this.botBlobState = "absent"), 4200);
     } else if (action === "bot-return") {
+      this.botBlobState = "run-in";
       this.botAnimOptions = {
         loop: false,
         path: "/assets/lottie-animations/Run_In_Entrance_Pass_v2.json",
       };
+      setTimeout(() => (this.botBlobState = "still"), 3200);
     }
   }
 
@@ -119,5 +130,9 @@ export class ChatPage implements OnInit {
       this.doCustomResponseAction(option.customAction);
     }
     this.notificationService.sendRapidproMessage(option.text);
+    this.onReceiveMessage({
+      text: option.text,
+      sender: "user",
+    });
   }
 }

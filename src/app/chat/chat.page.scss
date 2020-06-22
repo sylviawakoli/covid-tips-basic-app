@@ -5,14 +5,15 @@
 }
 
 .bot-blob {
-  width: 80vw;
+  width: 50vw;
   position: absolute;
-  left: -40vw;
+  left: -25vw;
   top: 20px;
   padding: 5px;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 40px;
   z-index: 10;
+  animation: shrink 4s 1;
 
   .bot-lottie {
     position: absolute;
@@ -30,6 +31,21 @@
   }
 }
 
+@keyframes shrink {
+  0% {
+    left: -75vw;
+    width: 150vw;
+  }
+  50% {
+    left: -75vw;
+    width: 150vw;
+  }
+  100% {
+    left: -25vw;
+    width: 50vw;
+  }
+}
+
 .msg-container {
   display: flex;
   flex-direction: row;
@@ -37,17 +53,17 @@
   margin-bottom: 20px;
   width: 90vw;
 
-  &:nth-child(1) {
+  /* &:nth-child(1) {
     max-width: calc(60vw - 50px);
     position: relative;
     left: 40vw;
-  }
+  } */
 
   .msg-bubble {
     background-color: grey;
     color: white;
-    padding: 20px;
-    font-size: 20px;
+    padding: 16px;
+    font-size: 16px;
     border-radius: 10px;
   }
 

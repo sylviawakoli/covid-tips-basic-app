@@ -27,6 +27,6 @@ export function lottiePlayerFactory() {
     LottieModule.forRoot({ player: lottiePlayerFactory, useCache: true }),
   ],
   declarations: [ChatPage],
-  providers: [NotificationService],
+  providers: [],
 })
 export class ChatPageModule {}

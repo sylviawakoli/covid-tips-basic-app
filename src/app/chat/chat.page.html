@@ -8,10 +8,10 @@
 </ion-header>
 
 <ion-content>
-  <div class="bot-blob">
-    <ng-lottie containerClass="bot-lottie" [options]="botAnimOptions" (loopComplete)="loopCompleted($event)">
+  <div *ngIf="botBlobState !='absent'" class="bot-blob">
+    <ng-lottie containerClass="bot-lottie" [options]="botAnimOptions">
     </ng-lottie>
-    <img *ngIf="backgroundBlobVisible" class="still-bot-blob" src="assets/img/coffee_bot_blob1.png">
+    <img *ngIf="false" class="still-bot-blob" src="assets/img/coffee_bot_blob1.png">
   </div>
   <ion-content class="bot-messages">
     <div class="messages">
