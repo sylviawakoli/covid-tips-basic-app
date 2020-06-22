@@ -65,7 +65,8 @@ export class ChatPage implements OnInit {
         });
       setTimeout(() => {
         this.notificationService.sendRapidproMessage("start_demo");
-      }, 1000);
+        this.botBlobState = "still";
+      }, 3000);
     }
   }
 
@@ -155,6 +156,14 @@ export class ChatPage implements OnInit {
       };
       setTimeout(() => (this.botBlobState = "still"), 3200);
     }
+  }
+
+  sendCustomOption(text: string) {
+    this.notificationService.sendRapidproMessage(text);
+    this.onReceiveMessage({
+      text: text,
+      sender: "user",
+    });
   }
 
   selectResponseOption(option: ChatResponseOption) {
