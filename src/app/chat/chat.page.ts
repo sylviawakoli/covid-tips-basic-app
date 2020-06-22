@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef, ViewChild } from "@angular/core";
 import {
   ChatMessage,
   ChatResponseOption,
@@ -10,6 +10,7 @@ import {
   NotificationService,
   IRapidProMessage,
 } from "../services/notification.service";
+import { IonContent } from "@ionic/angular";
 
 @Component({
   selector: "app-chat",
@@ -33,6 +34,10 @@ export class ChatPage implements OnInit {
     loop: false,
     path: "/assets/lottie-animations/Walk_In_Entrance_Pass_v2.json",
   };
+
+  @ViewChild("messagesContent", { static: false })
+  private messagesContent: IonContent;
+  scrollingInterval: any;
 
   constructor(
     private notificationService: NotificationService,
@@ -101,7 +106,7 @@ export class ChatPage implements OnInit {
       }
       this.responseOptions = message.responseOptions
         ? message.responseOptions
-        : [];
+        : [{ text: "no" }];
     } else {
       this.responseOptions = [];
     }
@@ -130,6 +135,7 @@ export class ChatPage implements OnInit {
       this.messages.push(userMessages.pop());
     } */
     this.messages = this.allMessages.slice(this.allMessages.length - 2);
+    this.messagesContent.scrollToBottom(2000);
     this.cd.detectChanges();
   }
 
@@ -161,5 +167,9 @@ export class ChatPage implements OnInit {
       text: option.text,
       sender: "user",
     });
+  }
+
+  showAllMessages() {
+    this.messages = this.allMessages;
   }
 }

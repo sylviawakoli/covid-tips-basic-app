@@ -4,13 +4,17 @@
   flex-direction: column;
 }
 
+.bot-messages {
+  max-height: 70vh;
+}
+
 .bot-blob {
   width: 50vw;
   position: absolute;
   left: -25vw;
   top: 20px;
   padding: 5px;
-  background-color: rgba(255, 255, 255, 0.8);
+  // background-color: rgba(255, 255, 255, 0.8);
   border-radius: 40px;
   z-index: 10;
   animation: shrink 4s 1;
@@ -91,7 +95,7 @@
   left: 0px;
   right: 0px;
   background-color: rgba(255, 255, 255, 0.5);
-  max-height: 50vh;
+  max-height: 40vh;
 }
 
 .response-option {
