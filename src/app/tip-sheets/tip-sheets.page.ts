@@ -2,12 +2,12 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { IonSlides } from "@ionic/angular";
 
 @Component({
-  selector: "app-topics",
-  templateUrl: "./topics.page.html",
-  styleUrls: ["./topics.scss"],
+  selector: "app-tip-sheets",
+  templateUrl: "./tip-sheets.page.html",
+  styleUrls: ["./tip-sheets.scss"],
 })
-export class TopicsPage implements OnInit {
-  topics = TOPICS;
+export class TipSheetsPage implements OnInit {
+  tipSheets = TIP_SHEETS;
   // note - options passed to swiper api: https://swiperjs.com/api/
   slideOptions: IonSlides["options"] = {
     autoHeight: true,
@@ -24,7 +24,7 @@ export class TopicsPage implements OnInit {
   slideDidChange() {}
 }
 
-const TOPICS = [
+const TIP_SHEETS = [
   {
     title: "One-on-One Time",
     number: 1,
@@ -85,5 +85,4 @@ const TOPICS = [
     title: "Parenting a New Baby?",
     number: 15,
   },
-  
 ];
