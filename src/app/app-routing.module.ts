@@ -28,7 +28,11 @@ const routes: Routes = [
   {
     path: 'stories',
     loadChildren: () => import('./stories/stories.module').then( m => m.StoriesPageModule)
+  },  {
+    path: 'chat',
+    loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
   }
+
 ];
 
 @NgModule({
