@@ -18,11 +18,11 @@ section:nth-of-type(4n + 3) {
   color: white;
 }
 
-.topic-list-container {
+.tip-sheets-list-container {
   display: flex;
   flex-direction: column;
 }
-.topic-nav-link {
+.tip-sheet-nav-link {
   border-bottom: 1px solid rgb(255, 255, 255, 0.3);
   cursor: pointer;
 }
@@ -35,7 +35,7 @@ img {
   font-size: 2em;
   margin-left: 5px;
 }
-#topic-5-list > li {
+#tip-sheet-5-list > li {
   margin-bottom: 1em;
 }
 
@@ -43,7 +43,7 @@ ion-slide.swiper-slide {
   text-align: unset;
   font-size: unset;
 }
-ion-button.topic-nav {
+ion-button.tip-sheet-nav {
   color: rgba(255, 255, 255, 0.3);
 }
 

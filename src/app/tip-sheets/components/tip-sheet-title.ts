@@ -1,33 +1,33 @@
 import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: "app-topic-title",
-  template: ` <div class="topic-title-container">
-    <div class="topic-list-number">{{ topic.number }}</div>
+  selector: "app-tip-sheet-title",
+  template: ` <div class="tip-title-container">
+    <div class="tip-list-number">{{ tipSheet.number }}</div>
     <div style="flex: 1; text-align:left">
-      <h2 class="topic-list-title">DEMO-1 PARENTING</h2>
-      <h2 class="topic-list-subtitle">{{ topic.title }}</h2>
+      <h2 class="tip-list-title">DEMO-1 PARENTING</h2>
+      <h2 class="tip-list-subtitle">{{ tipSheet.title }}</h2>
     </div>
   </div>`,
   styles: [
     `
-      .topic-title-container {
+      .tip-title-container {
         display: flex;
         align-items: center;
       }
-      .topic-list-number {
+      .tip-list-number {
         color: var(--ion-color-tertiary);
         font-size: 80px;
         margin-right: 10px;
         line-height: 80px;
       }
-      .topic-list-title {
+      .tip-list-title {
         color: var(--ion-color-secondary);
         font-size: 20px;
         font-weight: bold;
         margin: 0;
       }
-      .topic-list-subtitle {
+      .tip-list-subtitle {
         color: var(--ion-color-tertiary);
         font-size: 20px;
         font-weight: bold;
@@ -36,11 +36,11 @@ import { Component, Input } from "@angular/core";
     `,
   ],
 })
-export class TopicTitleComponent {
-  @Input() topic: ITopic;
+export class TipSheetTitleComponent {
+  @Input() tipSheet: ITipSheet;
 }
 
-interface ITopic {
+interface ITipSheet {
   number: number;
   title: string;
 }
