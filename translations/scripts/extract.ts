@@ -9,15 +9,12 @@ function main() {
     process.cwd(),
     "node_modules/.bin/ngx-translate-extract"
   );
-  for (var i = 0; i < 15; i++) {
-    let outFile = `./src/assets/i18n/topics/topic-${i}.json`;
-    let inFile = `./src/topics/content/topic-${i}.html`;
-    spawnSync(
-      `${binPath} --input ./src/topics/content/topic-${i}.html --output ${outFile} --key-as-default-value --replace --format namespaced-json`,
-      { shell: true, stdio: "inherit" }
-    );
-    // create additional copy as default en strings
-    fs.copyFileSync(outFile, outFile.replace(".json", ".en.json"));
-  }
+  const outFile = "./src/assets/i18n/app-strings.json";
+  spawnSync(
+    `${binPath} --input ./src --output ${outFile} --key-as-default-value --replace --format namespaced-json`,
+    { shell: true, stdio: "inherit" }
+  );
+  // create additional copy as default en strings
+  fs.copyFileSync(outFile, outFile.replace("app-strings", "app-strings.en"));
 }
 main();
