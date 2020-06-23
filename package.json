@@ -15,9 +15,7 @@
     "lint": "eslint --ext .ts,.js src/",
     "e2e": "ng e2e",
     "i18n:extract": "ts-node --project tsconfig.scripts.json translations/scripts/extract",
-    "i18n:process-xlsx": "ts-node --project tsconfig.scripts.json translations/scripts/process-xlsx",
-    "i18n:upload": "ts-node --project tsconfig.scripts.json translations/scripts/upload",
-    "i18n:download": "ts-node --project tsconfig.scripts.json translations/scripts/download"
+    "i18n:process-xlsx": "ts-node --project tsconfig.scripts.json translations/scripts/process-xlsx"
   },
   "private": true,
   "husky": {
