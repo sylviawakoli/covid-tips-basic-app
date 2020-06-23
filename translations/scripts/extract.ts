@@ -2,10 +2,8 @@ import { spawnSync } from "child_process";
 import * as path from "path";
 import * as fs from "fs-extra";
 
-const TIP_SHEETS_CONTENT_DIR = path.resolve(
-  process.cwd(),
-  "src/app/tip-sheets/content"
-);
+const TIP_SHEETS_CONTENT_DIR = "./src/app/tip-sheets/content";
+const I18N_DIR = "./src/assets/i18n";
 const BIN_PATH = path.resolve(
   process.cwd(),
   "node_modules/.bin/ngx-translate-extract"
@@ -17,8 +15,9 @@ const BIN_PATH = path.resolve(
  * as individual json files, and a single json file for the rest of app content.
  *********************************************************************************/
 function main() {
-  extractOtherAppStrings();
   extractStringsByTipSheet();
+  extractOtherAppStrings();
+  copyEnTranslations();
 }
 main();
 
@@ -30,9 +29,9 @@ function extractStringsByTipSheet() {
     .readdirSync(TIP_SHEETS_CONTENT_DIR)
     .filter((f) => path.extname(f) === ".html");
   for (let file of sheetFiles) {
-    const outFile = `./src/assets/i18n/${file.replace(".html", ".json")}`;
+    const outFile = `${I18N_DIR}/${file.replace(".html", ".json")}`;
     spawnSync(
-      `${BIN_PATH} --input ./${TIP_SHEETS_CONTENT_DIR}/${file} --output ${outFile} --key-as-default-value --replace --format-indentation "  "`,
+      `${BIN_PATH} --input ${TIP_SHEETS_CONTENT_DIR}/${file} --output ${outFile} --key-as-default-value --replace --format-indentation "  "`,
       { shell: true, stdio: "inherit" }
     );
   }
@@ -54,4 +53,16 @@ function extractOtherAppStrings() {
   );
   // move tip sheets content back
   fs.moveSync("./tip-sheets-content-tmp", TIP_SHEETS_CONTENT_DIR);
+}
+
+/**
+ * Use the base translation files to populate an `en` folder also for consistency when loading language files
+ */
+function copyEnTranslations() {
+  const translationFiles = fs
+    .readdirSync(I18N_DIR)
+    .filter((f) => path.extname(f) === ".json");
+  for (let filename of translationFiles) {
+    fs.copySync(`${I18N_DIR}/${filename}`, `${I18N_DIR}/en/${filename}`);
+  }
 }
