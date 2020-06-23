@@ -33,10 +33,11 @@ function extractStringsByTipSheet() {
   const sheetFiles = fs
     .readdirSync(TIP_SHEETS_CONTENT_DIR)
     .filter((f) => path.extname(f) === ".html");
+  // extract individual tip sheet html files
   for (let file of sheetFiles) {
     const outFile = `${I18N_DIR}/${file.replace(".html", ".json")}`;
     spawnSync(
-      `${TRANSLATE_BIN_PATH} --input ${TIP_SHEETS_CONTENT_DIR}/${file} --output ${outFile} --replace --format-indentation "  "`,
+      `${TRANSLATE_BIN_PATH} --input ${TIP_SHEETS_CONTENT_DIR}/${file} --output ${outFile} --key-as-default-value --replace --format-indentation "  "`,
       { shell: true, stdio: "inherit" }
     );
   }
@@ -53,7 +54,7 @@ function extractOtherAppStrings() {
   // extract all strings
   const outFile = "./src/assets/i18n/app-strings.json";
   spawnSync(
-    `${TRANSLATE_BIN_PATH} --input ./src --output ${outFile} --replace --format-indentation "  "`,
+    `${TRANSLATE_BIN_PATH} --input ./src --output ${outFile} --key-as-default-value --replace --format-indentation "  "`,
     { shell: true, stdio: "inherit" }
   );
   // move tip sheets content back
@@ -68,10 +69,7 @@ function copyEnTranslations() {
     .readdirSync(I18N_DIR)
     .filter((f) => path.extname(f) === ".json");
   for (let filename of translationFiles) {
-    const json = fs.readJsonSync(`${I18N_DIR}/${filename}`);
-    const en = {};
-    Object.keys(json).forEach((key) => (en[key] = key));
-    fs.writeJSONSync(`${I18N_DIR}/en/${filename}`, en);
+    fs.copySync(`${I18N_DIR}/${filename}`, `${I18N_DIR}/en/${filename}`);
   }
 }
 
