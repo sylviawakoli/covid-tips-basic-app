@@ -4,9 +4,13 @@ import * as fs from "fs-extra";
 
 const TIP_SHEETS_CONTENT_DIR = "./src/app/tip-sheets/content";
 const I18N_DIR = "./src/assets/i18n";
-const BIN_PATH = path.resolve(
+const TRANSLATE_BIN_PATH = path.resolve(
   process.cwd(),
   "node_modules/.bin/ngx-translate-extract"
+);
+const PRETTIER_BIN_PATH = path.resolve(
+  process.cwd(),
+  "node_modules/.bin/prettier"
 );
 
 /*********************************************************************************
@@ -18,6 +22,7 @@ function main() {
   extractStringsByTipSheet();
   extractOtherAppStrings();
   copyEnTranslations();
+  formatJSONFiles();
 }
 main();
 
@@ -31,7 +36,7 @@ function extractStringsByTipSheet() {
   for (let file of sheetFiles) {
     const outFile = `${I18N_DIR}/${file.replace(".html", ".json")}`;
     spawnSync(
-      `${BIN_PATH} --input ${TIP_SHEETS_CONTENT_DIR}/${file} --output ${outFile} --key-as-default-value --replace --format-indentation "  "`,
+      `${TRANSLATE_BIN_PATH} --input ${TIP_SHEETS_CONTENT_DIR}/${file} --output ${outFile} --replace --format-indentation "  "`,
       { shell: true, stdio: "inherit" }
     );
   }
@@ -48,7 +53,7 @@ function extractOtherAppStrings() {
   // extract all strings
   const outFile = "./src/assets/i18n/app-strings.json";
   spawnSync(
-    `${BIN_PATH} --input ./src --output ${outFile} --key-as-default-value --replace --format-indentation "  "`,
+    `${TRANSLATE_BIN_PATH} --input ./src --output ${outFile} --replace --format-indentation "  "`,
     { shell: true, stdio: "inherit" }
   );
   // move tip sheets content back
@@ -63,6 +68,16 @@ function copyEnTranslations() {
     .readdirSync(I18N_DIR)
     .filter((f) => path.extname(f) === ".json");
   for (let filename of translationFiles) {
-    fs.copySync(`${I18N_DIR}/${filename}`, `${I18N_DIR}/en/${filename}`);
+    const json = fs.readJsonSync(`${I18N_DIR}/${filename}`);
+    const en = {};
+    Object.keys(json).forEach((key) => (en[key] = key));
+    fs.writeJSONSync(`${I18N_DIR}/en/${filename}`, en);
   }
+}
+
+function formatJSONFiles() {
+  spawnSync(`${PRETTIER_BIN_PATH} ${I18N_DIR}/**/*.json --write`, {
+    shell: true,
+    stdio: "inherit",
+  });
 }
