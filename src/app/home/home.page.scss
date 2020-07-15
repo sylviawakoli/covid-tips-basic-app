@@ -15,19 +15,19 @@
 
   &.activities {
     background-color: #56c4cf;
+  }
+
+  &.chat {
+    background-color: #ed1651;
 
     & > h2 {
       color: white;
     }
   }
-
-  &.chat {
-    background-color: #ed1651;
-  }
 }
 
 .nav-menu-item > h2 {
-  font-size: 0.8em;
+  font-size: 24px;
   margin-left: 20px;
   color: var(--ion-color-primary);
 }
