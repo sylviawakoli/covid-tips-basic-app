@@ -10,8 +10,8 @@
   box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.5);
 
   max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 30px;
+  margin-right: 30px;
 
   &.tips {
     background-color: #fbad18;
@@ -24,12 +24,23 @@
   &.chat {
     background-color: #e7406d;
   }
+
+  &.partners {
+    background-color: #6e78b9;
+  }
 }
 
-@media only screen and (max-width: 570px) {
+@media only screen and (max-width: 321px) {
   .nav-menu-item {
-    margin-left: 25px;
-    margin-right: 25px;
+    margin: 10px;
+    padding: 10px;
+  }
+}
+
+@media only screen and (min-width: 570px) {
+  .nav-menu-item {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
