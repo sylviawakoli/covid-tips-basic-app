@@ -14,7 +14,7 @@
   margin-right: auto;
 
   &.tips {
-    background-color: #ffcb05;
+    background-color: #fbad18;
   }
 
   &.activities {
@@ -22,18 +22,14 @@
   }
 
   &.chat {
-    background-color: #ed1651;
-
-    & > h2 {
-      color: white;
-    }
+    background-color: #e7406d;
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 570px) {
   .nav-menu-item {
-    margin-left: 40px;
-    margin-right: 40px;
+    margin-left: 25px;
+    margin-right: 25px;
   }
 }
 
