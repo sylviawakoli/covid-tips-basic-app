@@ -11,7 +11,6 @@ const OUTPUT_DIR = path.join(process.cwd(), "translations/output-files");
  * Constants used for quality control
  ***************************************************************************/
 const TARGET_SHEETS = [
-  "SocialMedia",
   "Tipsheet1",
   "Tipsheet2",
   "Tipsheet3",
