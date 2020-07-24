@@ -11,7 +11,6 @@ const OUTPUT_DIR = path.join(process.cwd(), "translations/output-files");
  * Constants used for quality control
  ***************************************************************************/
 const TARGET_SHEETS = [
-  "SocialMedia",
   "Tipsheet1",
   "Tipsheet2",
   "Tipsheet3",
@@ -140,7 +139,9 @@ function createTranslationJSON(lang: string, xlsxFilepath: string) {
         keyCell.v.trim &&
         keyCell.v.trim().length > 0
       ) {
-        dictionary[keyCell.v] = valueCell.v;
+        let key: string = keyCell.v;
+        key.replace("  ", " ");
+        dictionary[key] = valueCell.v;
       } else {
         break;
       }
