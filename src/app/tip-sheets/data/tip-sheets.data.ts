@@ -20,7 +20,7 @@ export const TIP_SHEETS = [
     number: 5,
   },
   {
-    title: "Talking about Demo-1-19",
+    title: "Talking about Covid-19",
     number: 6,
   },
   {
