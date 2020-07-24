@@ -27,6 +27,7 @@ import { TipSheetTitleComponent } from "./components/tip-sheet-title";
 import { AppTranslationModule } from "../modules/translation.module";
 import { TipSheetsHomePage } from "./pages/home/home.page";
 import { TipSheetDetailPage } from "./pages/detail/detail.page";
+import { TipSheetFooterComponent } from "./components/tip-sheet-footer/tip-sheet-footer.component";
 
 const TIP_SHEET_CONTENT_COMPONENTS = [
   TipSheet1Component,
@@ -45,6 +46,7 @@ const TIP_SHEET_CONTENT_COMPONENTS = [
   TipSheet14Component,
   TipSheet15Component,
   TipSheetTitleComponent,
+  TipSheetFooterComponent,
   TipSheetsHomePage,
   TipSheetDetailPage,
 ];
