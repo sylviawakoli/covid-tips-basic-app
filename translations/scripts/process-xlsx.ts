@@ -140,7 +140,9 @@ function createTranslationJSON(lang: string, xlsxFilepath: string) {
         keyCell.v.trim &&
         keyCell.v.trim().length > 0
       ) {
-        dictionary[keyCell.v] = valueCell.v;
+        let key: string = keyCell.v;
+        key.replace("  ", " ");
+        dictionary[key] = valueCell.v;
       } else {
         break;
       }
