@@ -16,8 +16,7 @@ export class TipSheetsHomePage {
       this.tipSheets = TIP_SHEETS.slice(0, 6);
     }
     translate.onLangChange.subscribe(() => {
-      console.log("Lang change?");
-      if (translate.currentLang === "en") {
+      if (translate.currentLang === "en" || !translate.currentLang) {
         this.tipSheets = TIP_SHEETS;
       } else {
         this.tipSheets = TIP_SHEETS.slice(0, 6);

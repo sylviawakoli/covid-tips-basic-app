@@ -23,6 +23,19 @@ export class TipSheetDetailPage implements OnDestroy {
       .then(() => {
         this.tipSheet = tipSheet;
       });
+    if (translations.currentLang === "en" || !translations.currentLang) {
+      this.totalTipSheets = 15;
+    } else {
+      this.totalTipSheets = 6;
+    }
+    translations.onLangChange.subscribe(() => {
+      console.log("Lang change?");
+      if (translations.currentLang === "en" || !translations.currentLang) {
+        this.totalTipSheets = 15;
+      } else {
+        this.totalTipSheets = 6;
+      }
+    });
   }
   ngOnDestroy() {
     this.translations.setTranslationSourceFile();
