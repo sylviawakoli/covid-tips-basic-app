@@ -19,7 +19,10 @@ export class TipSheetDetailPage implements OnDestroy {
     const sheetNumber = Number(route.snapshot.params.tipSheetNumber);
     const tipSheet = TIP_SHEETS.find((s) => s.number === sheetNumber);
     this.translations
-      .setTranslationSourceFiles([`tip-sheet-${sheetNumber}.json`])
+      .setTranslationSourceFiles([
+        `tip-sheet-${sheetNumber}.json`,
+        `tip-sheet-titles.json`,
+      ])
       .then(() => {
         this.tipSheet = tipSheet;
       });
