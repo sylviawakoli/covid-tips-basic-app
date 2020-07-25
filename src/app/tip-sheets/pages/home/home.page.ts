@@ -10,6 +10,7 @@ import { AppTranslateService } from "src/app/modules/translation.module";
 export class TipSheetsHomePage {
   tipSheets = TIP_SHEETS;
   constructor(private translate: AppTranslateService) {
+    this.translate.setTranslationSourceFiles([`tip-sheet-tiles.json`]);
     if (translate.currentLang === "en" || !translate.currentLang) {
       this.tipSheets = TIP_SHEETS;
     } else {

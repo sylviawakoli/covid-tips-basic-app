@@ -19,7 +19,7 @@ export class TipSheetDetailPage implements OnDestroy {
     const sheetNumber = Number(route.snapshot.params.tipSheetNumber);
     const tipSheet = TIP_SHEETS.find((s) => s.number === sheetNumber);
     this.translations
-      .setTranslationSourceFile(`tip-sheet-${sheetNumber}.json`)
+      .setTranslationSourceFiles([`tip-sheet-${sheetNumber}.json`])
       .then(() => {
         this.tipSheet = tipSheet;
       });
@@ -38,7 +38,7 @@ export class TipSheetDetailPage implements OnDestroy {
     });
   }
   ngOnDestroy() {
-    this.translations.setTranslationSourceFile();
+    this.translations.setTranslationSourceFiles();
   }
 
   nextTipSheet() {

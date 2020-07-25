@@ -11,8 +11,8 @@ import {
   FakeMissingTranslationHandler,
 } from "@ngx-translate/core";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
-import { Observable, BehaviorSubject } from "rxjs";
-import { take } from "rxjs/operators";
+import { Observable, BehaviorSubject, forkJoin, of } from "rxjs";
+import { take, map, catchError } from "rxjs/operators";
 import { environment } from "src/environments/environment";
 
 const DEFAULT_TRANSLATION_SOURCE = "app-strings.json";
@@ -22,9 +22,9 @@ const QC_MODE = environment.translationsDebug;
 
 export function createTranslateLoader(
   http: HttpClient,
-  translationSource = DEFAULT_TRANSLATION_SOURCE
+  translationSources = [DEFAULT_TRANSLATION_SOURCE]
 ): TranslateLoader {
-  return new AppTranslateLoader(http, translationSource) as any;
+  return new AppTranslateLoader(http, translationSources) as any;
 }
 
 /**
@@ -55,13 +55,17 @@ export class AppTranslateService extends TranslateService {
    * @param translationSource - filepath relative to assets/i81n/{lang} folder.
    * Omit to use default source
    */
-  async setTranslationSourceFile(
-    translationSource = DEFAULT_TRANSLATION_SOURCE
+  async setTranslationSourceFiles(
+    translationSources = [DEFAULT_TRANSLATION_SOURCE]
   ) {
     this.loading$.next(true);
     const lang = this.currentLang || this.defaultLang;
     // NOTE - getTranslation expects only one argument, so cast to any type
-    this.currentLoader = createTranslateLoader(this.http, translationSource);
+    // Always include default translation source
+    if (translationSources.indexOf(DEFAULT_TRANSLATION_SOURCE) < 0) {
+      translationSources.push(DEFAULT_TRANSLATION_SOURCE);
+    }
+    this.currentLoader = createTranslateLoader(this.http, translationSources);
     await this.reloadLang(lang).pipe(take(1)).toPromise();
     console.log("translations loaded");
     this.loading$.next(false);
@@ -100,13 +104,34 @@ export class AppTranslateService extends TranslateService {
 class AppTranslateLoader {
   constructor(
     private http: HttpClient,
-    private translationSource = DEFAULT_TRANSLATION_SOURCE
+    private translationSources = [DEFAULT_TRANSLATION_SOURCE]
   ) {
-    console.log("loading tranlsations", this.translationSource);
+    console.log("loading tranlsations", this.translationSources);
   }
 
-  getTranslation(lang: string): Observable<any> {
-    return this.http.get(`assets/i18n/${lang}/${this.translationSource}`);
+  getTranslation(lang: string): Observable<{ [englishKey: string]: string }> {
+    let getRequestObservables = this.translationSources.map((sourceFile) => {
+      return this.http.get(`assets/i18n/${lang}/${sourceFile}`).pipe(
+        catchError((err) => {
+          console.warn(
+            `Error fetching translate file assets/i18n/${lang}/${sourceFile}`
+          );
+          console.warn(err);
+          return of({});
+        })
+      );
+    });
+    return forkJoin(getRequestObservables).pipe(
+      map((responses) => {
+        let combinedJSON: { [englishKey: string]: string } = {};
+        responses.forEach((response) => {
+          Object.keys(response).forEach((key) => {
+            combinedJSON[key] = response[key];
+          });
+        });
+        return combinedJSON;
+      })
+    );
   }
 }
 
