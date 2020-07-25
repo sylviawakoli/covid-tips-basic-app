@@ -1,0 +1,423 @@
+{
+  "data": [
+    {
+      "data": {
+        "languageId": "sw-KE",
+        "words": {
+          "total": 5081,
+          "translated": 8,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 1,
+          "approved": 0
+        },
+        "translationProgress": 0,
+        "approvalProgress": 0
+      }
+    },
+    {
+      "data": {
+        "languageId": "fr",
+        "words": {
+          "total": 5081,
+          "translated": 0,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 0,
+          "approved": 0
+        },
+        "translationProgress": 0,
+        "approvalProgress": 0
+      }
+    },
+    {
+      "data": {
+        "languageId": "sq",
+        "words": {
+          "total": 5081,
+          "translated": 1763,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 148,
+          "approved": 0
+        },
+        "translationProgress": 34,
+        "approvalProgress": 0
+      }
+    },
+    {
+      "data": {
+        "languageId": "af",
+        "words": {
+          "total": 5081,
+          "translated": 1735,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 147,
+          "approved": 0
+        },
+        "translationProgress": 34,
+        "approvalProgress": 0
+      }
+    },
+    {
+      "data": {
+        "languageId": "am",
+        "words": {
+          "total": 5081,
+          "translated": 1735,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 146,
+          "approved": 0
+        },
+        "translationProgress": 34,
+        "approvalProgress": 0
+      }
+    },
+    {
+      "data": {
+        "languageId": "ar",
+        "words": {
+          "total": 5081,
+          "translated": 1728,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 144,
+          "approved": 0
+        },
+        "translationProgress": 34,
+        "approvalProgress": 0
+      }
+    },
+    {
+      "data": {
+        "languageId": "bn",
+        "words": {
+          "total": 5081,
+          "translated": 1735,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 146,
+          "approved": 0
+        },
+        "translationProgress": 34,
+        "approvalProgress": 0
+      }
+    },
+    {
+      "data": {
+        "languageId": "da",
+        "words": {
+          "total": 5081,
+          "translated": 1732,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 145,
+          "approved": 0
+        },
+        "translationProgress": 34,
+        "approvalProgress": 0
+      }
+    },
+    {
+      "data": {
+        "languageId": "de",
+        "words": {
+          "total": 5081,
+          "translated": 1735,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 145,
+          "approved": 0
+        },
+        "translationProgress": 34,
+        "approvalProgress": 0
+      }
+    },
+    {
+      "data": {
+        "languageId": "el",
+        "words": {
+          "total": 5081,
+          "translated": 1738,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 146,
+          "approved": 0
+        },
+        "translationProgress": 34,
+        "approvalProgress": 0
+      }
+    },
+    {
+      "data": {
+        "languageId": "et",
+        "words": {
+          "total": 5081,
+          "translated": 1732,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 145,
+          "approved": 0
+        },
+        "translationProgress": 34,
+        "approvalProgress": 0
+      }
+    },
+    {
+      "data": {
+        "languageId": "fa",
+        "words": {
+          "total": 5081,
+          "translated": 1704,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 131,
+          "approved": 0
+        },
+        "translationProgress": 33,
+        "approvalProgress": 0
+      }
+    },
+    {
+      "data": {
+        "languageId": "fi",
+        "words": {
+          "total": 5081,
+          "translated": 291,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 33,
+          "approved": 0
+        },
+        "translationProgress": 5,
+        "approvalProgress": 0
+      }
+    },
+    {
+      "data": {
+        "languageId": "ga",
+        "words": {
+          "total": 5081,
+          "translated": 1725,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 134,
+          "approved": 0
+        },
+        "translationProgress": 33,
+        "approvalProgress": 0
+      }
+    },
+    {
+      "data": {
+        "languageId": "gu",
+        "words": {
+          "total": 5081,
+          "translated": 1763,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 149,
+          "approved": 0
+        },
+        "translationProgress": 34,
+        "approvalProgress": 0
+      }
+    },
+    {
+      "data": {
+        "languageId": "hi",
+        "words": {
+          "total": 5081,
+          "translated": 1756,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 145,
+          "approved": 0
+        },
+        "translationProgress": 34,
+        "approvalProgress": 0
+      }
+    },
+    {
+      "data": {
+        "languageId": "hu",
+        "words": {
+          "total": 5081,
+          "translated": 1738,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 146,
+          "approved": 0
+        },
+        "translationProgress": 34,
+        "approvalProgress": 0
+      }
+    },
+    {
+      "data": {
+        "languageId": "hy",
+        "words": {
+          "total": 5081,
+          "translated": 1738,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 146,
+          "approved": 0
+        },
+        "translationProgress": 34,
+        "approvalProgress": 0
+      }
+    },
+    {
+      "data": {
+        "languageId": "id",
+        "words": {
+          "total": 5081,
+          "translated": 1679,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 130,
+          "approved": 0
+        },
+        "translationProgress": 33,
+        "approvalProgress": 0
+      }
+    },
+    {
+      "data": {
+        "languageId": "it",
+        "words": {
+          "total": 5081,
+          "translated": 1704,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 131,
+          "approved": 0
+        },
+        "translationProgress": 33,
+        "approvalProgress": 0
+      }
+    },
+    {
+      "data": {
+        "languageId": "ja",
+        "words": {
+          "total": 5081,
+          "translated": 1704,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 131,
+          "approved": 0
+        },
+        "translationProgress": 33,
+        "approvalProgress": 0
+      }
+    },
+    {
+      "data": {
+        "languageId": "ka",
+        "words": {
+          "total": 5081,
+          "translated": 1704,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 131,
+          "approved": 0
+        },
+        "translationProgress": 33,
+        "approvalProgr100  4610    0  4610    0     0   8336      0 --:--:-- --:--:-- --:--:--  8321ved": 0
+      },
+      "phrases": {
+        "total": 404,
+        "translated": 111,
+        "approved": 0
+      },
+      "translationProgress": 27,
+      "approvalProgress": 0
+    },
+    {
+      "data": {
+        "languageId": "mk",
+        "words": {
+          "total": 5081,
+          "translated": 1704,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 131,
+          "approved": 0
+        },
+        "translationProgress": 33,
+        "approvalProgress": 0
+      }
+    },
+    {
+      "data": {
+        "languageId": "mn",
+        "words": {
+          "total": 5081,
+          "translated": 1704,
+          "approved": 0
+        },
+        "phrases": {
+          "total": 404,
+          "translated": 131,
+          "approved": 0
+        },
+        "translationProgress": 33,
+        "approvalProgress": 0
+      }
+    }
+  ],
+  "pagination": {
+    "offset": 0,
+    "limit": 25
+  }
+}

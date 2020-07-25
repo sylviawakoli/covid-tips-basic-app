@@ -38,16 +38,25 @@ interface ILanguage {
 }
 
 const LANGUAGES: ILanguage[] = [
-  {
-    code: "en",
-    name: "English",
-  },
-  {
-    code: "sw",
-    name: "Kiswahili",
-  },
-  {
-    code: "af",
-    name: "Afrikaans",
-  },
+  { code: "sq", name: "Shqip" },
+  { code: "af", name: "Afrikaans" },
+  { code: "am", name: "አማርኛ" },
+  { code: "ar", name: "العربية" },
+  { code: "bn", name: "বাংলা" },
+  { code: "da", name: "dansk" },
+  { code: "de", name: "Deutsch" },
+  { code: "el", name: "ελληνικά" },
+  { code: "et", name: "eesti, eesti keel" },
+  { code: "fa", name: "فارسی" },
+  { code: "ga", name: "Gaeilge" },
+  { code: "gu", name: "ગુજરાતી" },
+  { code: "hi", name: "हिन्दी, हिंदी" },
+  { code: "hu", name: "magyar" },
+  { code: "hy", name: "Հայերեն" },
+  { code: "id", name: "Bahasa Indonesia" },
+  { code: "it", name: "Italiano" },
+  { code: "ja", name: "日本語 (にほんご)" },
+  { code: "ka", name: "ქართული" },
+  { code: "mk", name: "македонски јазик" },
+  { code: "mn", name: "Монгол хэл" },
 ];
