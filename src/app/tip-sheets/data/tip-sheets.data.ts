@@ -8,7 +8,7 @@ export const TIP_SHEETS = [
     number: 2,
   },
   {
-    title: "Structure Up",
+    title: "Structure Up!",
     number: 3,
   },
   {
