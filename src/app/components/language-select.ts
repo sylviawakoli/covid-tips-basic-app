@@ -38,6 +38,7 @@ interface ILanguage {
 }
 
 const LANGUAGES: ILanguage[] = [
+  { code: "en", name: "English" },
   { code: "sq", name: "Shqip" },
   { code: "af", name: "Afrikaans" },
   { code: "am", name: "አማርኛ" },
