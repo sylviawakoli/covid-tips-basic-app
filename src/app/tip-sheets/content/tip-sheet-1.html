@@ -1,24 +1,25 @@
 <div class="tip-sheet" id="tipSheet1">
   <div class="navy-bg">
+    <span style="display: none;" translate>One-on-One Time</span>
     <p translate style="font-weight: bold; color: white;">
-      Can't go to work? Schools closed? Worried about money? It is normal to
-      feel stressed and overwhelmed
+      Can’t go to work? Schools closed? Worried about money? It is normal to feel stressed and overwhelmed.
     </p>
-    <p translate style="color: white; opacity: 0.6;">
-      School shutdown is also a chance to make better relationships with our
-      children and teenagers. One-on-One time is free and fun. It makes children
-      feel loved and secure, and shows them that they are important
+    <p style="color: white; opacity: 0.6;">
+      <span translate>School shutdown is also a chance to make better relationships with our children and
+        teenagers.</span>
+      <span translate>One-on-One time is free and fun. It makes children feel loved and secure, and shows them that they
+        are important.</span>
     </p>
   </div>
   <section class="section">
     <div style="display: flex; flex-direction: row">
       <p translate style="font-size: 20px;">
-        Set aside time to spend with each child.
+        Set aside time to spend with each child
       </p>
       <img class="blobs-playing-with-blocks" src="assets/images/blobs_playing_with_blocks.svg">
     </div>
-    <span translate>It can be for just 20 minutes, or longer - it's up to us. It can be at
-      the same time each day so children or teenagers can look forward to it.</span>
+    <span translate>It can be for just 20 minutes, or longer – it’s up to us. It can be at the same time each day so
+      children or teenagers can look forward to it.</span>
     <button translate [routerLink]="['/activities']" class="try-activity-btn">
       Try an activity!
     </button>
@@ -49,9 +50,9 @@
     <div *ngIf="section2Expanded" style="display: flex;">
       <ul>
         <li translate>
-          Talk about something they like: sports, music, celebrities, friends
+          Talk about something they like: sports, music, TV, celebrities, friends
         </li>
-        <li translate>Go for a walk - outdoors or around the home</li>
+        <li translate>Go for a walk – outdoors or around the home</li>
         <li translate>Exercise together to their favorite music</li>
       </ul>
     </div>
@@ -63,9 +64,9 @@
     </div>
     <ul *ngIf="childSectionExpanded">
       <li translate>Read a book or look at pictures</li>
-      <li translate>Go for a walk - outdoors or around the home</li>
+      <li translate>Go for a walk – outdoors or around the home</li>
       <li translate>Dance to music or sing songs!</li>
-      <li translate>Do a chore together - make cleaning and cooking a game!</li>
+      <li translate>Do a chore together – make cleaning and cooking a game!</li>
       <li translate>Help with school work</li>
     </ul>
   </section>
@@ -77,35 +78,16 @@
   <section class="section">
     <h2 translate>Ask your child what they would like to do</h2>
     <p translate>
-      Choosing builds their self confidence. If they want to do something that
-      isn't OK with physical distancing, then this is a chance to talk with them
-      about this. (see next screen)
+      Choosing builds their self confidence. If they want to do something that isn’t OK with physical distancing, then
+      this is a chance to talk with them about this. (see next leaflet)
     </p>
   </section>
 
   <section class="section">
-    <h2 translate>Switch off the TV and phone. This is virus-free time</h2>
+    <h2 translate>Switch off the TV and phone. This is virus-free time.</h2>
   </section>
 
   <section class="section">
-    <div>
-      <h3 translate>For more information click below links:</h3>
-      <button class="footer-button">
-        <a translate
-          href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/healthy-parenting"
-          class="footer-button-links">TIPS FROM WHO</a>
-      </button>
-      <button class="footer-button">
-        <a translate href="https://www.unicef.org/coronavirus/covid-19-parenting-tips" class="footer-button-links">TIPS
-          FROM UNICEF</a>
-      </button>
-      <button class="footer-button">
-        <a translate href="https://www.covid19parenting.com/" class="footer-button-links">WORLD WIDE LANGUAGE</a>
-      </button>
-      <button class="footer-button">
-        <a translate href="https://www.acceleratehub.org/plh-research-outputs/"
-          class="footer-button-links">EVIDENCE-BASE</a>
-      </button>
-    </div>
+    <app-tip-sheet-footer></app-tip-sheet-footer>
   </section>
 </div>

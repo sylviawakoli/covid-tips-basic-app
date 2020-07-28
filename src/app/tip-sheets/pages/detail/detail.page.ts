@@ -19,13 +19,29 @@ export class TipSheetDetailPage implements OnDestroy {
     const sheetNumber = Number(route.snapshot.params.tipSheetNumber);
     const tipSheet = TIP_SHEETS.find((s) => s.number === sheetNumber);
     this.translations
-      .setTranslationSourceFile(`tip-sheet-${sheetNumber}.json`)
+      .setTranslationSourceFiles([
+        `tip-sheet-${sheetNumber}.json`,
+        `tip-sheet-titles.json`,
+      ])
       .then(() => {
         this.tipSheet = tipSheet;
       });
+    if (translations.currentLang === "en" || !translations.currentLang) {
+      this.totalTipSheets = 15;
+    } else {
+      this.totalTipSheets = 6;
+    }
+    translations.onLangChange.subscribe(() => {
+      console.log("Lang change?");
+      if (translations.currentLang === "en" || !translations.currentLang) {
+        this.totalTipSheets = 15;
+      } else {
+        this.totalTipSheets = 6;
+      }
+    });
   }
   ngOnDestroy() {
-    this.translations.setTranslationSourceFile();
+    this.translations.setTranslationSourceFiles();
   }
 
   nextTipSheet() {

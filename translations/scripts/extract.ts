@@ -1,6 +1,7 @@
 import { spawnSync } from "child_process";
 import * as path from "path";
 import * as fs from "fs-extra";
+import { TIP_SHEETS } from "../../src/app/tip-sheets/data/tip-sheets.data";
 
 const TIP_SHEETS_CONTENT_DIR = "./src/app/tip-sheets/content";
 const I18N_DIR = "./src/assets/i18n";
@@ -21,6 +22,7 @@ const PRETTIER_BIN_PATH = path.resolve(
 function main() {
   extractStringsByTipSheet();
   extractOtherAppStrings();
+  extractTipSheetTitles();
   copyEnTranslations();
   formatJSONFiles();
 }
@@ -43,12 +45,24 @@ function extractStringsByTipSheet() {
   }
 }
 
+function extractTipSheetTitles() {
+  console.log("Extracting tip sheet title strings");
+  let tipSheetTitlesMap: { [english: string]: string } = {};
+  TIP_SHEETS.forEach((tipSheet) => {
+    tipSheetTitlesMap[tipSheet.title] = tipSheet.title;
+  });
+  let outputFilePath = path.join(I18N_DIR, "tip-sheet-titles.json");
+  let jsonOutput = JSON.stringify(tipSheetTitlesMap, null, 4);
+  fs.writeFileSync(outputFilePath, jsonOutput, { flag: "w+" });
+}
+
 /**
  * Extract strings from all files that are not tip-sheets to single app-strings file
  * As there is no nice way to exclude a folder from input glob (only file type), move
  * the folder before generating, and then move back
  */
 function extractOtherAppStrings() {
+  console.log("Extracting other app strings");
   // move tips content so not read by extraction
   fs.moveSync(TIP_SHEETS_CONTENT_DIR, "./tip-sheets-content-tmp");
   // extract all strings

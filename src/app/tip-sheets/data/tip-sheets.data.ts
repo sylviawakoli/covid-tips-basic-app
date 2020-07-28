@@ -8,7 +8,7 @@ export const TIP_SHEETS = [
     number: 2,
   },
   {
-    title: "Structure Up",
+    title: "Structure Up!",
     number: 3,
   },
   {
@@ -20,7 +20,7 @@ export const TIP_SHEETS = [
     number: 5,
   },
   {
-    title: "Talking about Demo-1-19",
+    title: "Talking about COVID-19",
     number: 6,
   },
   {
