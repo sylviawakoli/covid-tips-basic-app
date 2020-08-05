@@ -9,7 +9,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --aot --buildOptimizer",
+    "build": "ionic build --prod --engine=browser",
     "build:prod": "ionic build --prod",
     "test": "ng test",
     "lint": "eslint --ext .ts,.js src/",
