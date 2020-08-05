@@ -4,18 +4,16 @@ import { TIP_SHEETS } from "../data/tip-sheets.data";
 @Component({
   selector: "app-tip-sheet-title",
   template: ` <div class="tip-title-container">
-    <div class="tip-list-number">{{ tipSheet.number }}</div>
-    <div style="flex: 1; text-align:left">
-      <h2 class="tip-list-subtitle" translate>
-        {{ tipSheet.title }}
-      </h2>
-    </div>
+    <h2 class="tip-list-subtitle" translate>
+      {{ tipSheet.title }}
+    </h2>
   </div>`,
   styles: [
     `
       .tip-title-container {
         display: flex;
         align-items: center;
+        margin: 24px;
       }
       .tip-list-number {
         color: var(--ion-color-tertiary);
@@ -26,7 +24,7 @@ import { TIP_SHEETS } from "../data/tip-sheets.data";
       }
       .tip-list-title {
         color: var(--ion-color-secondary);
-        font-size: 20px;
+        font-size: 30px;
         font-weight: bold;
         margin: 0;
       }
