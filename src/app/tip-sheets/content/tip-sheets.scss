@@ -1,5 +1,8 @@
 .tip-sheet {
   font-family: robotoCondensed, sans-serif;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 
   p,
   li {
@@ -8,6 +11,10 @@
 
   h2 {
     font-size: 28px;
+  }
+
+  a {
+    color: #40e9ff;
   }
 }
 
@@ -33,11 +40,19 @@ section:nth-of-type(4n + 2) {
 section:nth-of-type(4n + 3) {
   background: #ed1651;
   color: white;
+
+  a {
+    color: #280098;
+  }
 }
 
 section:nth-of-type(4n) {
   background: #56c5d0;
   color: #0b4060;
+
+  a {
+    color: #2326d3;
+  }
 
   .try-activity-btn {
     border-color: #0b4060;
