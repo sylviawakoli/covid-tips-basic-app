@@ -17,8 +17,8 @@
     background-color: #fbad18;
   }
 
-  &.activities {
-    background-color: #56c4cf;
+  &.website {
+    background-color: #6e78b9;
   }
 
   &.chat {
@@ -26,8 +26,13 @@
   }
 
   &.partners {
-    background-color: #6e78b9;
+    background-color: #56c4cf;
   }
+
+  img {
+    max-height: 32px;
+  }
+  text-decoration: none;
 }
 
 @media only screen and (max-width: 321px) {

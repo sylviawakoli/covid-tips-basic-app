@@ -14,18 +14,24 @@
         <img src="assets/images/tips_icon1.svg" />
         <h2 translate>Parenting Tips</h2>
       </div>
-      <div class="nav-menu-item activities" [routerLink]="['/activities']">
+      <div *ngIf="false" class="nav-menu-item activities" [routerLink]="['/activities']">
         <img src="assets/images/activities_icon1.svg" />
         <h2 translate>
           Fun Activities
         </h2>
       </div>
-      <div class="nav-menu-item chat" [routerLink]="['/chat']">
+      <div *ngIf="false" class="nav-menu-item chat" [routerLink]="['/chat']">
         <img src="assets/images/chat_icon1.svg" />
         <h2 translate>
           Chat
         </h2>
       </div>
+      <a href="http://covid19parenting.com" class="nav-menu-item website">
+        <img src="assets/images/website_icon1.svg" />
+        <h2 translate>
+          Website
+        </h2>
+      </a>
       <div class="nav-menu-item partners" [routerLink]="['/partners']">
         <img src="assets/images/partners_icon1.svg" />
         <h2 translate>
@@ -33,6 +39,6 @@
         </h2>
       </div>
     </div>
-    <app-language-select style="opacity: 0.5;"></app-language-select>
+    <!--<app-language-select style="opacity: 0.5;"></app-language-select>-->
   </div>
 </ion-content>
